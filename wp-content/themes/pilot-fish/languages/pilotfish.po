@@ -1,0 +1,452 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Pilot Fish 0.3.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-11-13 14:20-0500\n"
+"PO-Revision-Date: 2013-11-06 16:04-0500\n"
+"Last-Translator: Daniel Zhao <daniel@danielatwork.com>\n"
+"Language-Team: Daniel Zhao <daniel@danielatwork.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ./pilot-fish\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SearchPath-0: ./pilot-fish\n"
+
+#: pilot-fish/comments.php:11
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: pilot-fish/comments.php:17
+msgid "No Response to"
+msgstr ""
+
+#: pilot-fish/comments.php:17
+msgid "One Response to"
+msgstr ""
+
+#: pilot-fish/comments.php:17
+msgid "% Responses to"
+msgstr ""
+
+#: pilot-fish/comments.php:25
+msgid "&#8249; previous"
+msgstr ""
+
+#: pilot-fish/comments.php:26
+msgid "next &#8250;"
+msgstr ""
+
+#: pilot-fish/comments.php:38
+msgid "Name"
+msgstr ""
+
+#: pilot-fish/comments.php:39
+msgid "name (required)"
+msgstr ""
+
+#: pilot-fish/comments.php:40
+msgid "E-mail"
+msgstr ""
+
+#: pilot-fish/comments.php:41
+msgid "email (required)"
+msgstr ""
+
+#: pilot-fish/comments.php:42
+msgid "Website"
+msgstr ""
+
+#: pilot-fish/comments.php:43
+msgid "website"
+msgstr ""
+
+#: pilot-fish/blog.php:34 pilot-fish/index.php:25 pilot-fish/search.php:41
+#: pilot-fish/archive.php:49
+msgid "&larr; previous"
+msgstr ""
+
+#: pilot-fish/blog.php:35 pilot-fish/index.php:26 pilot-fish/search.php:42
+#: pilot-fish/archive.php:50
+msgid "next &rarr;"
+msgstr ""
+
+#: pilot-fish/content-aside.php:8 pilot-fish/content-aside.php:37
+#: pilot-fish/content-status.php:8 pilot-fish/content-status.php:38
+#: pilot-fish/content-image.php:8 pilot-fish/content-image.php:37
+#: pilot-fish/content-standard.php:8 pilot-fish/content-standard.php:37
+#: pilot-fish/image.php:44
+#, php-format
+msgid "Permanent Link to %s"
+msgstr ""
+
+#: pilot-fish/content-aside.php:10 pilot-fish/content-status.php:11
+#: pilot-fish/content-image.php:10 pilot-fish/single-project.php:17
+#: pilot-fish/content-standard.php:10 pilot-fish/image.php:23
+msgid "Continue Reading &rarr;"
+msgstr ""
+
+#: pilot-fish/content-aside.php:16 pilot-fish/content-status.php:17
+#: pilot-fish/content-image.php:16 pilot-fish/single-project.php:23
+#: pilot-fish/content-standard.php:16
+msgid "About"
+msgstr ""
+
+#: pilot-fish/content-aside.php:22 pilot-fish/content-status.php:23
+#: pilot-fish/content-image.php:22 pilot-fish/single-project.php:29
+#: pilot-fish/content-standard.php:22 pilot-fish/image.php:24
+msgid "Pages:"
+msgstr ""
+
+#: pilot-fish/content-aside.php:31 pilot-fish/content-status.php:32
+#: pilot-fish/content-image.php:31 pilot-fish/content-standard.php:31
+#: pilot-fish/image.php:38
+msgid "No Response &darr;"
+msgstr ""
+
+#: pilot-fish/content-aside.php:31 pilot-fish/content-status.php:32
+#: pilot-fish/content-image.php:31 pilot-fish/content-standard.php:31
+#: pilot-fish/image.php:38
+msgid "One Response &darr;"
+msgstr ""
+
+#: pilot-fish/content-aside.php:31 pilot-fish/content-status.php:32
+#: pilot-fish/content-image.php:31 pilot-fish/content-standard.php:31
+#: pilot-fish/image.php:38
+msgid "% Responses &darr;"
+msgstr ""
+
+#: pilot-fish/content-aside.php:35 pilot-fish/content-status.php:36
+#: pilot-fish/content-image.php:35 pilot-fish/content-standard.php:35
+#: pilot-fish/image.php:42
+msgid "TAGS:"
+msgstr ""
+
+#: pilot-fish/content-aside.php:36 pilot-fish/content-status.php:37
+#: pilot-fish/content-image.php:36 pilot-fish/content-standard.php:36
+#: pilot-fish/image.php:43
+#, php-format
+msgid "FILED UNDER: %s"
+msgstr ""
+
+#: pilot-fish/content-aside.php:37 pilot-fish/content-status.php:38
+#: pilot-fish/content-image.php:37 pilot-fish/content-standard.php:37
+#: pilot-fish/image.php:44
+msgid "Permalink"
+msgstr ""
+
+#: pilot-fish/content-aside.php:40 pilot-fish/content-status.php:40
+#: pilot-fish/content-image.php:40 pilot-fish/single-project.php:39
+#: pilot-fish/content-standard.php:40
+msgid "Edit"
+msgstr ""
+
+#: pilot-fish/404.php:16
+msgid "404 &#8212; Oops! Deadend Here..."
+msgstr ""
+
+#: pilot-fish/404.php:17
+msgid "You can return"
+msgstr ""
+
+#: pilot-fish/404.php:17
+msgid "&larr; Home"
+msgstr ""
+
+#: pilot-fish/404.php:17
+msgid "or explore other pages and posts."
+msgstr ""
+
+#: pilot-fish/search.php:14
+msgid "We found"
+msgstr ""
+
+#: pilot-fish/search.php:19
+msgid " &#8211; "
+msgstr ""
+
+#: pilot-fish/search.php:21
+msgid "articles for "
+msgstr ""
+
+#: pilot-fish/search.php:22
+msgid "<span class=\"post-search-terms\">"
+msgstr ""
+
+#: pilot-fish/search.php:24
+msgid "</span><!-- end of .post-search-terms -->"
+msgstr ""
+
+#: pilot-fish/home.php:16
+msgid "Hello World!"
+msgstr ""
+
+#: pilot-fish/home.php:18
+msgid "A Minimal, Responsive Portfolio Theme"
+msgstr ""
+
+#: pilot-fish/home.php:19
+msgid ""
+"You can edit this section from home.php in the Edit Panel. Happy Blogging! "
+msgstr ""
+
+#: pilot-fish/home.php:23
+msgid "Featured Widgets Area"
+msgstr ""
+
+#: pilot-fish/single-project.php:44
+msgid "<span class=\"meta-nav\">&larr;</span> previous project"
+msgstr ""
+
+#: pilot-fish/single-project.php:45
+msgid "next project <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: pilot-fish/single.php:23
+msgid "<span class=\"meta-nav\">&larr;</span> previous post"
+msgstr ""
+
+#: pilot-fish/single.php:24
+msgid "next post <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: pilot-fish/sidebar-home.php:20
+msgid "featured one"
+msgstr ""
+
+#: pilot-fish/sidebar-home.php:21
+msgid ""
+"Replace the text here in the sidebar-home.php, or add widgets to Featured "
+"One area."
+msgstr ""
+
+#: pilot-fish/sidebar-home.php:38
+msgid "featured two"
+msgstr ""
+
+#: pilot-fish/sidebar-home.php:39
+msgid ""
+"Replace the text here in the sidebar-home.php, or add widgets to Featured "
+"Two area."
+msgstr ""
+
+#: pilot-fish/sidebar-home.php:54
+msgid "featured three"
+msgstr ""
+
+#: pilot-fish/sidebar-home.php:55
+msgid ""
+"Replace the text here in the sidebar-home.php, or add widgets to Featured "
+"Three area."
+msgstr ""
+
+#: pilot-fish/image.php:18
+msgid "&larr; Return to"
+msgstr ""
+
+#: pilot-fish/archive.php:22
+#, php-format
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: pilot-fish/archive.php:24
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: pilot-fish/archive.php:26
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: pilot-fish/archive.php:30
+#, php-format
+msgid "Author Archives: %s"
+msgstr ""
+
+#: pilot-fish/searchform.php:2
+msgid "search here &hellip;"
+msgstr ""
+
+#: pilot-fish/searchform.php:3
+msgid "Search"
+msgstr ""
+
+#: pilot-fish/functions.php:24
+msgid "Primary Navigation"
+msgstr ""
+
+#: pilot-fish/page.php:47
+msgid "Page Hierarchy:"
+msgstr ""
+
+#: pilot-fish/footer.php:22
+msgid "powered by"
+msgstr ""
+
+#: pilot-fish/footer.php:22
+msgid "http://wordpress.org"
+msgstr ""
+
+#: pilot-fish/footer.php:23
+msgid "WordPress"
+msgstr ""
+
+#: pilot-fish/footer.php:23
+msgid "Theme by"
+msgstr ""
+
+#: pilot-fish/footer.php:23
+msgid "http://danielatwork.com"
+msgstr ""
+
+#: pilot-fish/footer.php:24
+msgid "Daniel Zhao"
+msgstr ""
+
+#: pilot-fish/footer.php:27
+msgid "Back to Top"
+msgstr ""
+
+#: pilot-fish/includes/widgets.php:6
+msgid "Primary Sidebar"
+msgstr ""
+
+#: pilot-fish/includes/widgets.php:14
+msgid "Footer One"
+msgstr ""
+
+#: pilot-fish/includes/widgets.php:22
+msgid "Footer Two"
+msgstr ""
+
+#: pilot-fish/includes/widgets.php:30
+msgid "Footer Three"
+msgstr ""
+
+#: pilot-fish/includes/widgets.php:38
+msgid "Featured One"
+msgstr ""
+
+#: pilot-fish/includes/widgets.php:46
+msgid "Featured Two"
+msgstr ""
+
+#: pilot-fish/includes/widgets.php:54
+msgid "Featured Three"
+msgstr ""
+
+#: pilot-fish/includes/widgets.php:70
+msgid "Use this widget to add a vCard"
+msgstr ""
+
+#: pilot-fish/includes/widgets.php:71
+msgid "pilotfish: vCard"
+msgstr ""
+
+#: pilot-fish/includes/widgets.php:98
+msgid "vCard"
+msgstr ""
+
+#: pilot-fish/includes/widgets.php:164
+msgid "Title (optional):"
+msgstr ""
+
+#: pilot-fish/includes/widgets.php:168
+msgid "Street Address:"
+msgstr ""
+
+#: pilot-fish/includes/widgets.php:172
+msgid "City/Locality:"
+msgstr ""
+
+#: pilot-fish/includes/widgets.php:176
+msgid "State/Region:"
+msgstr ""
+
+#: pilot-fish/includes/widgets.php:180
+msgid "Zipcode/Postal Code:"
+msgstr ""
+
+#: pilot-fish/includes/widgets.php:184
+msgid "Telephone:"
+msgstr ""
+
+#: pilot-fish/includes/widgets.php:188
+msgid "Email:"
+msgstr ""
+
+#: pilot-fish/includes/template-tags.php:5
+#, php-format
+msgid "<span class=\"%1$s\">Posted on</span> %2$s by %3$s"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:63
+msgid "Projects"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:64
+msgid "Project"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:108
+msgid "Untitled"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:136
+msgid "Continue Reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:22
+msgid "Theme Options"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:36
+msgid " Theme Options"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:39
+msgid "Options saved"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:50
+msgid ""
+"<p>Thank you for downloading Pilot Fish (^^) For more information on "
+"customizing the theme, please go to <a href=\"http://wordpress.danielatwork."
+"com/pilotfish/faq/\" target=\"_blank\">http://wordpress.danielatwork.com/"
+"pilotfish/faq/</a></p>\n"
+"\t\t\t\t\t\t\t<p>Follow Danni on twitter <a href=\"https://twitter.com/"
+"danni1990\" target=\"_blank\">@danni1990</a></p>"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:59
+msgid "Google Analytics"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:62
+msgid "Add Google Analytics to footer"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:71
+msgid "Google Analytics Tracking Code"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:74
+msgid "UA-XXXXX-X"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:83
+msgid "Enable Favicon"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:86
+msgid ""
+"a favicon should be 16 x 16px and named \"favicon.ico\"<br />Please upload "
+"the favicon to the main directory of the theme through FTP."
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:92
+msgid "Save Options"
+msgstr ""

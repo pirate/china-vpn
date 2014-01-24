@@ -1,0 +1,955 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: contact_form\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-12-17 16:51+0300\n"
+"PO-Revision-Date: 2013-12-17 16:51+0300\n"
+"Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
+"Language-Team: Kenneth <kenneth@snollocer.net>\n"
+"Language: ca_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: contact_form.php:32
+#: contact_form.php:538
+msgid "Contact Form Settings"
+msgstr "Opcions Contact Form"
+
+#: contact_form.php:32
+msgid "Contact Form"
+msgstr "Contact Form"
+
+#: contact_form.php:33
+msgid "Contact Form Pro Extra Settings"
+msgstr "Opcions extra del Contact Form Pro"
+
+#: contact_form.php:33
+#: contact_form.php:592
+#: contact_form.php:729
+#: contact_form.php:800
+#: contact_form.php:982
+msgid "Contact Form Pro"
+msgstr "Contact Form Pro"
+
+#: contact_form.php:80
+#: contact_form.php:854
+#: contact_form.php:884
+msgid "Name:"
+msgstr "Nom:"
+
+#: contact_form.php:81
+#: contact_form.php:855
+#: contact_form.php:885
+msgid "Address:"
+msgstr "Adreça:"
+
+#: contact_form.php:82
+#: contact_form.php:856
+#: contact_form.php:886
+msgid "Email Address:"
+msgstr "Adreça de correu electrònic:"
+
+#: contact_form.php:83
+#: contact_form.php:857
+#: contact_form.php:887
+msgid "Phone number:"
+msgstr "Nombre de telèfon"
+
+#: contact_form.php:84
+#: contact_form.php:858
+#: contact_form.php:888
+msgid "Subject:"
+msgstr "Asumpte:"
+
+#: contact_form.php:85
+#: contact_form.php:859
+#: contact_form.php:889
+msgid "Message:"
+msgstr "Missatge:"
+
+#: contact_form.php:86
+#: contact_form.php:860
+#: contact_form.php:890
+msgid "Attachment:"
+msgstr "Adjunt:"
+
+#: contact_form.php:87
+msgid "Supported file types: HTML, TXT, CSS, GIF, PNG, JPEG, JPG, TIFF, BMP, AI, EPS, PS, RTF, PDF, DOC, DOCX, XLS, ZIP, RAR, WAV, MP3, PPT. Max file size: 2MB"
+msgstr "Formats de fitxer suportats: HTML, TXT, CSS, GIF, PNG, JPEG, JPG, TIFF, BMP, AI, EPS, PS, RTF, PDF, DOC, DOCX, XLS, ZIP, RAR, WAV, MP3, PPT. Mida màxima: 2MB"
+
+#: contact_form.php:88
+#: contact_form.php:862
+#: contact_form.php:892
+msgid "Send me a copy"
+msgstr "Envia'm una còpia"
+
+#: contact_form.php:89
+#: contact_form.php:863
+#: contact_form.php:893
+msgid "Submit"
+msgstr "Enviar"
+
+#: contact_form.php:90
+msgid "Your name is required."
+msgstr "El seu nom es obligatori."
+
+#: contact_form.php:91
+msgid "Address is required."
+msgstr "Una adreça vàlida és obligatòria."
+
+#: contact_form.php:92
+msgid "A valid email address is required."
+msgstr "Una Adreça de correu electrònic és obligatòria."
+
+#: contact_form.php:93
+msgid "Phone number is required."
+msgstr "El seu nombre de telèfon és obligatori."
+
+#: contact_form.php:94
+msgid "Subject is required."
+msgstr "L'assumpte és obligatori."
+
+#: contact_form.php:95
+msgid "Message text is required."
+msgstr "El missatge és obligatori."
+
+#: contact_form.php:96
+msgid "File format is not valid."
+msgstr "El format de l'adjunt és incorrecte."
+
+#: contact_form.php:97
+msgid "File upload error."
+msgstr "Error de càrrega del fitxer"
+
+#: contact_form.php:98
+msgid "The file could not be uploaded."
+msgstr "El fitxer no ha pogut ser carregat"
+
+#: contact_form.php:99
+msgid "This file is too large."
+msgstr "Aquest document és massa gran."
+
+#: contact_form.php:100
+msgid "Please fill out the CAPTCHA."
+msgstr "Si us plau completi el CAPTCHA"
+
+#: contact_form.php:101
+msgid "Please make corrections below and try again."
+msgstr "Si us plau, corregeixi les dades i provi un altre cop."
+
+#: contact_form.php:103
+msgid "Thank you for contacting us."
+msgstr "Gràcies per contactar amb nosaltres"
+
+#: contact_form.php:203
+#, fuzzy
+msgid "requires"
+msgstr "Camps requerits"
+
+#: contact_form.php:203
+msgid "or higher, that is why it has been deactivated! Please upgrade WordPress and try again."
+msgstr ""
+
+#: contact_form.php:203
+msgid "Back to the WordPress"
+msgstr ""
+
+#: contact_form.php:203
+#, fuzzy
+msgid "Plugins page"
+msgstr "Plugins Pro"
+
+#: contact_form.php:494
+msgid "If the 'Redirect to page' option is selected then the URL field should be in the following format"
+msgstr "Si l'opció de 'redireccionament a la pàgina' està seleccionat llavors el camp URL ha d'estar en el següent format"
+
+#: contact_form.php:503
+msgid "Such user does not exist. Settings are not saved."
+msgstr "Usuari inexistent. Els canvis no s'han desat."
+
+#: contact_form.php:507
+#: contact_form.php:513
+msgid "Please enter a valid email address in the 'FROM' field. Settings are not saved."
+msgstr "Si us plau introdueixi una Adreça de correu electrònic correcta. Els canvis no s'han desat."
+
+#: contact_form.php:518
+msgid "Settings saved."
+msgstr "Configuració desada."
+
+#: contact_form.php:540
+msgid "Notice:"
+msgstr ""
+
+#: contact_form.php:540
+msgid "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button."
+msgstr ""
+
+#: contact_form.php:543
+#: contact_form.php:973
+#: contact_form.php:1838
+#: contact_form.php:1849
+msgid "Settings"
+msgstr "Configuració"
+
+#: contact_form.php:544
+#: contact_form.php:974
+msgid "Extra settings"
+msgstr "Configuració extra"
+
+#: contact_form.php:549
+#: contact_form.php:1236
+msgid "If you would like to add the Contact Form to your website, just copy and paste this shortcode to your post or page or widget:"
+msgstr "Si vol afegir Contact Form en la seva web, copiï i enganxi aquest codi en el seu missatge, pàgina o widget:"
+
+#: contact_form.php:549
+#: contact_form.php:550
+#: contact_form.php:877
+#: contact_form.php:926
+msgid "or"
+msgstr ""
+
+#: contact_form.php:550
+msgid "If have any problems with the standard shortcode [contact_form], you should use the shortcode"
+msgstr ""
+
+#: contact_form.php:551
+msgid "They work the same way."
+msgstr ""
+
+#: contact_form.php:552
+msgid "If you leave the fields empty, the messages will be sent to the email address specified during registration."
+msgstr "Si la informació d'aquest camp queda buida, s'usarà l'adreça especificada durant el registre."
+
+#: contact_form.php:556
+msgid "The user's email address:"
+msgstr "Adreça de correu electrònic de l'usuari:"
+
+#: contact_form.php:560
+msgid "Create a username"
+msgstr "Seleccioni un nom d'usuari"
+
+#: contact_form.php:565
+msgid "Enter a username of the person who should get the messages from the contact form."
+msgstr "Introdueixi el nom de l'usuari que rebrà missatges des de contact form"
+
+#: contact_form.php:569
+msgid "Use this email address:"
+msgstr "Usi aquesta adreça de correu electrònic::"
+
+#: contact_form.php:572
+msgid "Enter the email address you want the messages forwarded to."
+msgstr "Introdueixi una adreça de correu electrònic on vulgui re-enviar el missatge"
+
+#: contact_form.php:578
+msgid "Add department selectbox to the contact form:"
+msgstr ""
+
+#: contact_form.php:586
+#: contact_form.php:1131
+msgid "If you upgrade to Pro version all your settings will be saved."
+msgstr ""
+
+#: contact_form.php:591
+#: contact_form.php:728
+#: contact_form.php:799
+#: contact_form.php:981
+msgid "This functionality is available in the Pro version of the plugin. For more details, please follow the link"
+msgstr "Aquesta funcionalitat està disponible en la versió Pro del connector. Per a més detalls, si us plau seguiu l'enllaç"
+
+#: contact_form.php:598
+msgid "Save emails to the database"
+msgstr ""
+
+#: contact_form.php:608
+#: contact_form.php:611
+#: contact_form.php:615
+msgid "Using Contact Form to DB powered by"
+msgstr ""
+
+#: contact_form.php:611
+#, fuzzy
+msgid "Activate Contact Form to DB"
+msgstr "Contact Form Pro"
+
+#: contact_form.php:615
+#, fuzzy
+msgid "Download Contact Form to DB"
+msgstr "Contact Form Pro"
+
+#: contact_form.php:620
+msgid "Additional options"
+msgstr "Opcions addicionals"
+
+#: contact_form.php:622
+msgid "Show"
+msgstr ""
+
+#: contact_form.php:623
+msgid "Hide"
+msgstr ""
+
+#: contact_form.php:627
+msgid "What to use?"
+msgstr "Què usar?"
+
+#: contact_form.php:630
+msgid "Wp-mail"
+msgstr "Wp-mail"
+
+#: contact_form.php:630
+msgid "You can use the wp_mail function for mailing"
+msgstr "Vostè pot utilitzar la funció wp_mail pel correu."
+
+#: contact_form.php:632
+msgid "Mail"
+msgstr "Mail"
+
+#: contact_form.php:632
+msgid "To send mail you can use the php mail function"
+msgstr "Per enviar correu vostè pot usar la funció 'php mail'"
+
+#: contact_form.php:636
+#, fuzzy
+msgid "The text in the 'From' field"
+msgstr "Modifica el camp DE al contact form"
+
+#: contact_form.php:638
+msgid "User name"
+msgstr ""
+
+#: contact_form.php:639
+#, fuzzy
+msgid "The name of the user who fills the form will be used in the field 'From'."
+msgstr "L'adreça de correu electrònic de l'usuari que omple el formulari s'ha de posar al camp 'From'."
+
+#: contact_form.php:642
+#, fuzzy
+msgid "This text will be used in the 'FROM' field"
+msgstr "Aquesta adreça de correu electrònic s'utilitzarà al camp 'De'"
+
+#: contact_form.php:646
+#, fuzzy
+msgid "The email address in the 'From' field"
+msgstr "Introduir el correu electrònic al camp 'From'"
+
+#: contact_form.php:648
+msgid "User email"
+msgstr ""
+
+#: contact_form.php:649
+msgid "The email address of the user who fills the form will be used in the field 'From'."
+msgstr "L'adreça de correu electrònic de l'usuari que omple el formulari s'ha de posar al camp 'From'."
+
+#: contact_form.php:652
+msgid "This email address will be used in the 'From' field."
+msgstr "Aquesta adreça de correu electrònic s'utilitzarà al camp 'De'"
+
+#: contact_form.php:656
+#, fuzzy
+msgid "Required symbol"
+msgstr "Camps requerits"
+
+#: contact_form.php:666
+msgid "Fields"
+msgstr ""
+
+#: contact_form.php:667
+msgid "Used"
+msgstr ""
+
+#: contact_form.php:668
+#, fuzzy
+msgid "Required"
+msgstr "Camps requerits"
+
+#: contact_form.php:669
+msgid "Visible"
+msgstr ""
+
+#: contact_form.php:670
+msgid "Disabled for editing"
+msgstr ""
+
+#: contact_form.php:671
+msgid "Field's default value"
+msgstr ""
+
+#: contact_form.php:676
+#: contact_form.php:1006
+#: contact_form.php:1679
+#: contact_form.php:1709
+msgid "Name"
+msgstr "Nom"
+
+#: contact_form.php:684
+#: contact_form.php:1011
+#: contact_form.php:1683
+#: contact_form.php:1711
+msgid "Address"
+msgstr "Adreça:"
+
+#: contact_form.php:692
+msgid "Email Address"
+msgstr "Adreça de correu electrònic:"
+
+#: contact_form.php:700
+#, fuzzy
+msgid "Phone number"
+msgstr "Nombre de telèfon"
+
+#: contact_form.php:708
+#: contact_form.php:1026
+#: contact_form.php:1693
+#: contact_form.php:1715
+msgid "Subject"
+msgstr "Assumpte"
+
+#: contact_form.php:716
+#: contact_form.php:1030
+#: contact_form.php:1696
+#: contact_form.php:1716
+msgid "Message"
+msgstr "MIssatge"
+
+#: contact_form.php:734
+msgid "Attachment block"
+msgstr "Adjunt blocat"
+
+#: contact_form.php:736
+msgid "Users can attach the following file formats"
+msgstr "Els usuaris poden adjuntar els següents formats d'arxiu"
+
+#: contact_form.php:750
+msgid "Add to the form"
+msgstr ""
+
+#: contact_form.php:755
+#, fuzzy
+msgid "Tips below the Attachment"
+msgstr "Consells del blocatge de l'adjunt"
+
+#: contact_form.php:764
+#, fuzzy
+msgid "'Send me a copy' block"
+msgstr "Envia'm una còpia"
+
+#: contact_form.php:777
+#: contact_form.php:780
+#: contact_form.php:784
+#: contact_form.php:1040
+msgid "Captcha"
+msgstr "Captcha"
+
+#: contact_form.php:777
+#: contact_form.php:780
+#: contact_form.php:784
+msgid "powered by"
+msgstr ""
+
+#: contact_form.php:780
+msgid "Activate captcha"
+msgstr "Captcha activat"
+
+#: contact_form.php:784
+msgid "Download captcha"
+msgstr "Descarrega captcha"
+
+#: contact_form.php:792
+msgid "Agreement checkbox"
+msgstr ""
+
+#: contact_form.php:792
+msgid "Required checkbox for submitting the form"
+msgstr ""
+
+#: contact_form.php:793
+msgid "Optional checkbox"
+msgstr ""
+
+#: contact_form.php:793
+msgid "Optional checkbox, the results of which will be displayed in email"
+msgstr ""
+
+#: contact_form.php:804
+msgid "Delete an attachment file from the server after the email is sent"
+msgstr ""
+
+#: contact_form.php:810
+msgid "Email in HTML format sending"
+msgstr ""
+
+#: contact_form.php:814
+msgid "Display additional info in the email"
+msgstr "Mostra informació addicional al correu electrònic,"
+
+#: contact_form.php:819
+#: contact_form.php:1646
+#: contact_form.php:1648
+msgid "Sent from (ip address)"
+msgstr "Enviat des de  (adreça IP)"
+
+#: contact_form.php:819
+#, fuzzy
+msgid "Example: Sent from (IP address):\t127.0.0.1"
+msgstr "Enviat des de  (adreça IP)"
+
+#: contact_form.php:820
+#: contact_form.php:1652
+#: contact_form.php:1654
+msgid "Date/Time"
+msgstr "Data/hora"
+
+#: contact_form.php:820
+msgid "Example: Date/Time:\tAugust 19, 2013 8:50 pm"
+msgstr ""
+
+#: contact_form.php:821
+#: contact_form.php:1658
+#: contact_form.php:1660
+msgid "Sent from (referer)"
+msgstr "Enviat des de (referent)"
+
+#: contact_form.php:821
+msgid "Example: Sent from (referer):\thttp://bestwebsoft.com/contacts/contact-us/"
+msgstr ""
+
+#: contact_form.php:822
+#: contact_form.php:1664
+#: contact_form.php:1666
+msgid "Using (user agent)"
+msgstr "Usant (user agent)"
+
+#: contact_form.php:822
+msgid "Example: Using (user agent):\tMozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.95 Safari/537.36"
+msgstr ""
+
+#: contact_form.php:826
+msgid "Language settings for the field names in the form"
+msgstr "Configuració de la llengua als noms dels camps del formulari"
+
+#: contact_form.php:835
+msgid "Add a language"
+msgstr "Afegeix lengua"
+
+#: contact_form.php:839
+msgid "Change the names of the contact form fields and error messages"
+msgstr "Modifica els noms dels camps i els missatges d'error del formulari de contacte"
+
+#: contact_form.php:844
+#: contact_form.php:917
+msgid "English"
+msgstr "Anglès"
+
+#: contact_form.php:861
+#: contact_form.php:891
+#, fuzzy
+msgid "Tips below the Attachment block"
+msgstr "Consells del blocatge de l'adjunt"
+
+#: contact_form.php:864
+#: contact_form.php:894
+msgid "Error message for the Name field"
+msgstr "Missatge d'error per al camp 'Nom'"
+
+#: contact_form.php:865
+#: contact_form.php:895
+msgid "Error message for the Address field"
+msgstr "Missatge d'error per al camp 'Adreça'"
+
+#: contact_form.php:866
+#: contact_form.php:896
+msgid "Error message for the Email field"
+msgstr "Missatge d'error per al camp 'Adreça de correu electrònic'"
+
+#: contact_form.php:867
+#: contact_form.php:897
+msgid "Error message for the Phone field"
+msgstr "Missatge d'error per al camp 'Telèfon\""
+
+#: contact_form.php:868
+#: contact_form.php:898
+msgid "Error message for the Subject field"
+msgstr "Missatge d'error per al camp 'Assumpte'"
+
+#: contact_form.php:869
+#: contact_form.php:899
+msgid "Error message for the Message field"
+msgstr "Missatge d'error per al camp 'Missatge'"
+
+#: contact_form.php:870
+#: contact_form.php:900
+msgid "Error message about the file type for the Attachment field"
+msgstr "Missatge d'error sobre el tipus de per al camp 'Adjunt'"
+
+#: contact_form.php:871
+#: contact_form.php:901
+msgid "Error message while uploading a file for the Attachment field to the server"
+msgstr "Missatge d'error al carregar al servidor un fitxer per al camp Adjunt"
+
+#: contact_form.php:872
+#: contact_form.php:902
+msgid "Error message while moving the file for the Attachment field"
+msgstr "Missatge d'error al mourerun fitxer per al camp Adjunt"
+
+#: contact_form.php:873
+#: contact_form.php:903
+msgid "Error message when file size limit for the Attachment field is exceeded"
+msgstr "Missatge d'error al superar el límit de mida de fitxer per al camp Adjunt"
+
+#: contact_form.php:874
+#: contact_form.php:904
+msgid "Error message for the Captcha field"
+msgstr "Missatge d'error al camp Captcha"
+
+#: contact_form.php:875
+#: contact_form.php:905
+msgid "Error message for the whole form"
+msgstr "Missatge d'error a tot el formulari"
+
+#: contact_form.php:877
+#: contact_form.php:907
+#: contact_form.php:926
+#: contact_form.php:932
+msgid "Use shortcode"
+msgstr "useu un codi curt"
+
+#: contact_form.php:877
+#: contact_form.php:907
+#: contact_form.php:926
+#: contact_form.php:932
+msgid "for this language"
+msgstr "Per aquesta llengua"
+
+#: contact_form.php:914
+msgid "Action after email is sent"
+msgstr "Accions després d'enviar un correu electrònic."
+
+#: contact_form.php:916
+msgid "Display text"
+msgstr "Mostra el text"
+
+#: contact_form.php:925
+#: contact_form.php:931
+msgid "Text"
+msgstr "Text"
+
+#: contact_form.php:938
+msgid "Redirect to the page"
+msgstr "Redirigir a la pàgina"
+
+#: contact_form.php:939
+msgid "Url"
+msgstr "Url"
+
+#: contact_form.php:944
+#: contact_form.php:1137
+msgid "Save Changes"
+msgstr "Desar els canvis"
+
+#: contact_form.php:950
+msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
+msgstr ""
+
+#: contact_form.php:951
+#, fuzzy
+msgid "Rate the plugin"
+msgstr "Plugins gratuïts"
+
+#: contact_form.php:954
+#, fuzzy
+msgid "If there is something wrong about it, please contact us"
+msgstr "Si té alguna pregunta, contacti'ns si us plau via plugin@bestwebsoft.com o utilitzi el formulari de contacte de la nostra web"
+
+#: contact_form.php:971
+msgid "Contact Form Pro | Extra Settings"
+msgstr "Opcions extra | Contact Form Pro"
+
+#: contact_form.php:986
+msgid "Errors output"
+msgstr "Errors de sortida"
+
+#: contact_form.php:989
+msgid "Display error messages"
+msgstr "Mostra els missatges d'error"
+
+#: contact_form.php:990
+msgid "Color of the input field errors."
+msgstr "Color dels errors al camp d'entrada"
+
+#: contact_form.php:991
+msgid "Display error messages & color of the input field errors"
+msgstr "Mostra els missatges d'error i el color dels errors del camp d'entrada"
+
+#: contact_form.php:996
+msgid "Add placeholder to the input blocks"
+msgstr "Afegeix marcador de posició als blocs d'entrada"
+
+#: contact_form.php:1002
+msgid "Add tooltips"
+msgstr "Afegir consells sobre les eines"
+
+#: contact_form.php:1016
+msgid "Email address"
+msgstr "Adreça de correu electrònic:"
+
+#: contact_form.php:1021
+msgid "Phone Number"
+msgstr "Nombre de telèfon"
+
+#: contact_form.php:1035
+msgid "Attachment"
+msgstr "Adjunt:"
+
+#: contact_form.php:1040
+msgid "(powered by bestwebsoft.com)"
+msgstr "(Impulsat per bestwebsoft.com)"
+
+#: contact_form.php:1045
+msgid "Style options"
+msgstr "Opcions d'estil"
+
+#: contact_form.php:1048
+msgid "Text color"
+msgstr "Color del text"
+
+#: contact_form.php:1051
+#: contact_form.php:1056
+#: contact_form.php:1066
+#: contact_form.php:1071
+#: contact_form.php:1076
+#: contact_form.php:1081
+#: contact_form.php:1091
+#: contact_form.php:1096
+#: contact_form.php:1102
+#: contact_form.php:1113
+#: contact_form.php:1118
+#: contact_form.php:1123
+msgid "Default"
+msgstr "Per defecte"
+
+#: contact_form.php:1053
+msgid "Label text color"
+msgstr "Color del text de l'etiqeta"
+
+#: contact_form.php:1058
+msgid "Placeholder color"
+msgstr "Color del marcador de posició"
+
+#: contact_form.php:1063
+msgid "Errors color"
+msgstr "Color dels errors"
+
+#: contact_form.php:1068
+msgid "Error text color"
+msgstr "Color del text d'error"
+
+#: contact_form.php:1073
+msgid "Background color of the input field errors"
+msgstr "Color de fons dels errors del camp d'entrada"
+
+#: contact_form.php:1078
+msgid "Border color of the input field errors"
+msgstr "Color de la vora dels errors del camp d'entrada"
+
+#: contact_form.php:1083
+msgid "Placeholder color of the input field errors"
+msgstr "Color del marcador de posició dels errors del camp d'entrada"
+
+#: contact_form.php:1088
+msgid "Input fields"
+msgstr "Visualitza l'adjunt"
+
+#: contact_form.php:1093
+msgid "Input fields background color"
+msgstr "Color de fons dels camps d'entrada"
+
+#: contact_form.php:1098
+msgid "Text fields color"
+msgstr "Color dels camps de text"
+
+#: contact_form.php:1100
+msgid "Border width in px, numbers only"
+msgstr "Ample de vora en px, sols nombres"
+
+#: contact_form.php:1104
+#: contact_form.php:1125
+msgid "Border color"
+msgstr "Color de la vora"
+
+#: contact_form.php:1109
+msgid "Submit button"
+msgstr "Enviar"
+
+# #: contact_form.php:928
+#: contact_form.php:1111
+msgid "Width in px, numbers only"
+msgstr "Ample en px, sols nombres"
+
+#: contact_form.php:1115
+msgid "Button color"
+msgstr "Color del botó"
+
+#: contact_form.php:1120
+msgid "Button text color"
+msgstr "Color del text del botó"
+
+#: contact_form.php:1141
+msgid "Contact Form Pro | Preview"
+msgstr "Contact Form Pro | Vista prèvia"
+
+#: contact_form.php:1144
+msgid "Show with errors"
+msgstr "Mostra amb errors"
+
+#: contact_form.php:1152
+#: contact_form.php:1154
+msgid "Please enter your full name..."
+msgstr "Si us plau introduïu el nom complet"
+
+#: contact_form.php:1165
+#: contact_form.php:1167
+msgid "Please enter your address..."
+msgstr "Si us plau introduïu l'adreça"
+
+#: contact_form.php:1176
+#: contact_form.php:1178
+msgid "Please enter your email address..."
+msgstr "Si us plau introdueixi el seu e-mail"
+
+#: contact_form.php:1187
+#: contact_form.php:1189
+msgid "Please enter your phone number..."
+msgstr "Si us plau introduïu el nombre de telèfon"
+
+#: contact_form.php:1198
+#: contact_form.php:1200
+msgid "Please enter subject..."
+msgstr "Si us plau introduïu l'assumpte"
+
+#: contact_form.php:1208
+#: contact_form.php:1210
+msgid "Please enter your message..."
+msgstr "Si us plau introduïu el missatge"
+
+#: contact_form.php:1287
+msgid "Sorry, email message could not be delivered."
+msgstr "Ho sentim, el seu e-mail no ha pogut ser lliurat."
+
+#: contact_form.php:1673
+msgid "Contact from"
+msgstr "Contact from"
+
+#: contact_form.php:1686
+#: contact_form.php:1712
+msgid "Email"
+msgstr "Adreça de correu electrònic"
+
+#: contact_form.php:1690
+#: contact_form.php:1714
+msgid "Phone"
+msgstr "Telèfon"
+
+#: contact_form.php:1699
+#: contact_form.php:1717
+msgid "Site"
+msgstr "Lloc"
+
+#: contact_form.php:1780
+msgid "If you can see this MIME, it means that the MIME type is not supported by your email client!"
+msgstr "Si pot veure aquest MIME, vol dir que el tipus MIME no és compatible amb el seu client de correu electrònic!"
+
+#: contact_form.php:1850
+msgid "FAQ"
+msgstr "FAQ"
+
+#: contact_form.php:1851
+msgid "Support"
+msgstr "Suport"
+
+#: contact_form.php:1910
+msgid "Are you sure that you want to delete this language data?"
+msgstr "Està vostè segur que vol esborrar aquest idioma?"
+
+#~ msgid "Display fields"
+#~ msgstr "Mostra els camps"
+
+#, fuzzy
+#~ msgid "Display tips below the Attachment block"
+#~ msgstr "Consells del blocatge de l'adjunt"
+
+#~ msgid "Required fields"
+#~ msgstr "Camps requerits"
+
+#~ msgid "You can attach the following file formats"
+#~ msgstr "Pot adjuntar els següents formats d'arxiu"
+
+#, fuzzy
+#~ msgid "Memory usage"
+#~ msgstr "MIssatge"
+
+#, fuzzy
+#~ msgid "Site URL"
+#~ msgstr "Lloc"
+
+#, fuzzy
+#~ msgid "Please enter a valid email address."
+#~ msgstr "Si us plau introdueixi el seu e-mail"
+
+#~ msgid "Activated plugins"
+#~ msgstr "Plugin activat"
+
+#~ msgid "Read more"
+#~ msgstr "Llegir més"
+
+#~ msgid "Installed plugins"
+#~ msgstr "Plugins instal·lats"
+
+#~ msgid "Recommended plugins"
+#~ msgstr "Plugins recomanants"
+
+#~ msgid "Purchase"
+#~ msgstr "Comprar"
+
+#~ msgid "Download"
+#~ msgstr "Descarregar"
+
+#~ msgid "Install %s"
+#~ msgstr "Instal·la %s"
+
+#~ msgid "Install now from wordpress.org"
+#~ msgstr "Instal·la ara des de wordpress.org"
+
+#, fuzzy
+#~ msgid "Active Plugins"
+#~ msgstr "Plugin activat"
+
+#, fuzzy
+#~ msgid "Inactive Plugins"
+#~ msgstr "Plugin activat"
+
+#, fuzzy
+#~ msgid "Send to support"
+#~ msgstr "Suport"
+
+#~ msgid "Contact Form Options"
+#~ msgstr "Opciones Contact Form"
+
+#~ msgid "Please enter a valid email address. Settings are not saved."
+#~ msgstr ""
+#~ "Por favor introduzca un e-mail correcto. Los cambios no se han guardado."
+
+#, fuzzy
+#~ msgid "E-Mail Address"
+#~ msgstr "Dirección e-mail:"
+
+#~ msgid "E-Mail Addresse:"
+#~ msgstr "Indirizzo e-mail:"
+
+#~ msgid "Install Now"
+#~ msgstr "Installa Ora"

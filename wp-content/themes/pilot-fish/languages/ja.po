@@ -1,0 +1,539 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Pilot Fish 0.3.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-19 21:46-0500\n"
+"PO-Revision-Date: 2013-11-06 16:04-0500\n"
+"Last-Translator: Daniel Zhao <daniel@danielatwork.com>\n"
+"Language-Team: Daniel Zhao <daniel@danielatwork.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ./pilot-fish\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SearchPath-0: ./pilot-fish\n"
+
+#: pilot-fish/blog.php:34 pilot-fish/archive-project.php:34
+#: pilot-fish/taxonomy-project_type.php:34 pilot-fish/search.php:41
+msgid "&larr; previous"
+msgstr "&larr; 前のページ"
+
+#: pilot-fish/blog.php:35 pilot-fish/archive-project.php:35
+#: pilot-fish/taxonomy-project_type.php:35 pilot-fish/search.php:42
+msgid "next &rarr;"
+msgstr "次のページ &rarr;"
+
+#: pilot-fish/taxonomy-project_type.php:14
+msgid "Posts Categorized:"
+msgstr ""
+
+#: pilot-fish/image.php:18
+msgid "&larr; Return to"
+msgstr "&larr;"
+
+#: pilot-fish/image.php:23 pilot-fish/content-quote.php:10
+#: pilot-fish/content-standard.php:10 pilot-fish/content-image.php:10
+msgid "Continue Reading &rarr;"
+msgstr "続きを読む &rarr;"
+
+#: pilot-fish/image.php:24 pilot-fish/content-quote.php:22
+#: pilot-fish/content-standard.php:22 pilot-fish/content-image.php:22
+msgid "Pages:"
+msgstr "ページ"
+
+#: pilot-fish/image.php:38 pilot-fish/content-quote.php:31
+#: pilot-fish/content-standard.php:31 pilot-fish/content-image.php:31
+msgid "No Response &darr;"
+msgstr "コメントはまだありません &darr;"
+
+#: pilot-fish/image.php:38 pilot-fish/content-quote.php:31
+#: pilot-fish/content-standard.php:31 pilot-fish/content-image.php:31
+msgid "One Response &darr;"
+msgstr "コメント（1） &darr;"
+
+#: pilot-fish/image.php:38 pilot-fish/content-quote.php:31
+#: pilot-fish/content-standard.php:31 pilot-fish/content-image.php:31
+msgid "% Responses &darr;"
+msgstr "コメント（%） &darr;"
+
+#: pilot-fish/image.php:42 pilot-fish/content-quote.php:35
+#: pilot-fish/content-standard.php:35 pilot-fish/content-image.php:35
+msgid "TAGS:"
+msgstr "タグ:"
+
+#: pilot-fish/image.php:43 pilot-fish/content-quote.php:36
+#: pilot-fish/content-standard.php:36 pilot-fish/content-image.php:36
+#, php-format
+msgid "FILED UNDER: %s"
+msgstr "カテゴリー: %s"
+
+#: pilot-fish/image.php:44 pilot-fish/content-quote.php:8
+#: pilot-fish/content-quote.php:37 pilot-fish/content-standard.php:8
+#: pilot-fish/content-standard.php:37 pilot-fish/content-image.php:8
+#: pilot-fish/content-image.php:37
+#, php-format
+msgid "Permanent Link to %s"
+msgstr "%s へのパーマリンク"
+
+#: pilot-fish/image.php:44 pilot-fish/content-quote.php:37
+#: pilot-fish/content-standard.php:37 pilot-fish/content-image.php:37
+msgid "Permalink"
+msgstr "パーマリンク"
+
+#: pilot-fish/functions.php:24
+msgid "Primary Navigation"
+msgstr ""
+
+#: pilot-fish/search.php:14
+msgid "We found"
+msgstr "検索結果"
+
+#: pilot-fish/search.php:19
+msgid " &#8211; "
+msgstr " &#8211; "
+
+#: pilot-fish/search.php:21
+msgid "articles for "
+msgstr " "
+
+#: pilot-fish/search.php:22
+msgid "<span class=\"post-search-terms\">"
+msgstr "<span class=\"post-search-terms\">"
+
+#: pilot-fish/search.php:24
+msgid "</span><!-- end of .post-search-terms -->"
+msgstr "</span><!-- end of .post-search-terms -->"
+
+#: pilot-fish/sidebar-home.php:20
+msgid "featured one"
+msgstr ""
+
+#: pilot-fish/sidebar-home.php:21
+msgid ""
+"Replace the text here in the sidebar-home.php, or add widgets to Featured "
+"One area."
+msgstr ""
+
+#: pilot-fish/sidebar-home.php:38
+msgid "featured two"
+msgstr ""
+
+#: pilot-fish/sidebar-home.php:39
+msgid ""
+"Replace the text here in the sidebar-home.php, or add widgets to Featured "
+"Two area."
+msgstr ""
+
+#: pilot-fish/sidebar-home.php:54
+msgid "featured three"
+msgstr ""
+
+#: pilot-fish/sidebar-home.php:55
+msgid ""
+"Replace the text here in the sidebar-home.php, or add widgets to Featured "
+"Three area."
+msgstr ""
+"Replace the text here in the sidebar-home.php, or add widgets to Featured "
+"Three area."
+
+#: pilot-fish/footer.php:22
+msgid "powered by"
+msgstr "powered by"
+
+#: pilot-fish/footer.php:22
+msgid "http://wordpress.org"
+msgstr "http://wordpress.org"
+
+#: pilot-fish/footer.php:23
+msgid "WordPress"
+msgstr "WordPress"
+
+#: pilot-fish/footer.php:23
+msgid "Theme by"
+msgstr "テーマの著者"
+
+#: pilot-fish/footer.php:23
+msgid "http://danielatwork.com"
+msgstr "http://danielatwork.com"
+
+#: pilot-fish/footer.php:24
+msgid "Daniel Zhao"
+msgstr "Daniel Zhao"
+
+#: pilot-fish/footer.php:27
+msgid "Back to Top"
+msgstr "トップへ戻る"
+
+#: pilot-fish/content-quote.php:16 pilot-fish/content-standard.php:16
+#: pilot-fish/content-image.php:16
+msgid "About"
+msgstr " "
+
+#: pilot-fish/content-quote.php:40 pilot-fish/content-standard.php:40
+#: pilot-fish/content-image.php:40
+msgid "Edit"
+msgstr "編集"
+
+#: pilot-fish/searchform.php:2
+msgid "search here &hellip;"
+msgstr "キーワードを入力 &hellip;"
+
+#: pilot-fish/searchform.php:3
+msgid "Search"
+msgstr "サイト内検索"
+
+#: pilot-fish/home.php:16
+msgid "Hello World!"
+msgstr "こんにちは！"
+
+#: pilot-fish/home.php:18
+msgid "A Minimal, Responsive Portfolio Theme"
+msgstr ""
+"シンプルかつレスポンシブなWebデザインに対応する、WordPress専用のテーマです。"
+
+#: pilot-fish/home.php:19
+msgid ""
+"You can edit this section from home.php in the Edit Panel. Happy Blogging! "
+msgstr ""
+"この度は『パイロットフィッシュ』をダウンロードいただきまして、誠にありがとう"
+"ございます。このセクションは『テーマ編集』パネルの『home.php』より編集可能で"
+"す。"
+
+#: pilot-fish/home.php:23
+msgid "Featured Widgets Area"
+msgstr "Featured Widgets Area"
+
+#: pilot-fish/single.php:23
+msgid "<span class=\"meta-nav\">&larr;</span> previous post"
+msgstr "<span class=\"meta-nav\">&larr;</span> 過去の投稿"
+
+#: pilot-fish/single.php:24
+msgid "next post <span class=\"meta-nav\">&rarr;</span>"
+msgstr "新しい投稿 <span class=\"meta-nav\">&rarr;</span>"
+
+#: pilot-fish/single-project.php:51
+msgid "<span class=\"meta-nav\">&larr;</span> previous project"
+msgstr "<span class=\"meta-nav\">&larr;</span> 過去の作品"
+
+#: pilot-fish/single-project.php:52
+msgid "next project <span class=\"meta-nav\">&rarr;</span>"
+msgstr "新しい作品 <span class=\"meta-nav\">&rarr;</span>"
+
+#: pilot-fish/404.php:16
+msgid "404 &#8212; Oops! Deadend Here..."
+msgstr "404 &#8212; お探しのページは見つかりませんでした。"
+
+#: pilot-fish/404.php:17
+msgid "You can return"
+msgstr " "
+
+#: pilot-fish/404.php:17
+msgid "&larr; Home"
+msgstr "ホームに戻る &larr;"
+
+#: pilot-fish/404.php:17
+msgid "or explore other pages and posts."
+msgstr "または他のページを検索してみてください。"
+
+#: pilot-fish/page.php:51
+msgid "Page Hierarchy:"
+msgstr "ページの階層:"
+
+#: pilot-fish/archive.php:22
+#, php-format
+msgid "Daily Archives: %s"
+msgstr "日別アーカイブ: %s"
+
+#: pilot-fish/archive.php:24
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr "月別アーカイブ: %s"
+
+#: pilot-fish/archive.php:26
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr "年別アーカイブ: %s"
+
+#: pilot-fish/archive.php:30
+#, php-format
+msgid "Author Archives: %s"
+msgstr "投稿者別アーカイブ: %s"
+
+#: pilot-fish/comments.php:11
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+"この投稿はパスワードで保護されています。表示するには、パスワードを入力してく"
+"ださい。"
+
+#: pilot-fish/comments.php:17
+msgid "No Response to"
+msgstr "コメント（0）"
+
+#: pilot-fish/comments.php:17
+msgid "One Response to"
+msgstr "コメント（1）"
+
+#: pilot-fish/comments.php:17
+msgid "% Responses to"
+msgstr "コメント（%）"
+
+#: pilot-fish/comments.php:25
+msgid "&#8249; previous"
+msgstr "&#8249; 古いコメント"
+
+#: pilot-fish/comments.php:26
+msgid "next &#8250;"
+msgstr "新しいコメント &#8250;"
+
+#: pilot-fish/comments.php:38
+msgid "Name"
+msgstr "お名前"
+
+#: pilot-fish/comments.php:39
+msgid "name (required)"
+msgstr "お名前(必須)"
+
+#: pilot-fish/comments.php:40
+msgid "E-mail"
+msgstr "メールアドレス (非公開)"
+
+#: pilot-fish/comments.php:41
+msgid "email (required)"
+msgstr "メールアドレス(必須)"
+
+#: pilot-fish/comments.php:42
+msgid "Website"
+msgstr "ウェブサイト"
+
+#: pilot-fish/comments.php:43
+msgid "website"
+msgstr "ウェブサイト"
+
+#: pilot-fish/includes/template-tags.php:5
+#, php-format
+msgid "<span class=\"%1$s\">Posted on</span> %2$s by %3$s"
+msgstr "<span class=\"%1$s\">投稿日時</span> %2$s 投稿者 %3$s"
+
+#: pilot-fish/includes/theme-options.php:22
+msgid "Theme Options"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:36
+msgid " Theme Options"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:39
+msgid "Options saved"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:50
+msgid ""
+"Thank you for downloading Pilot Fish (^^) For more information on "
+"customizing the theme, please go to "
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:50
+msgid "http://wordpress.danielatwork.com/pilotfish/faq/"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:50
+msgid "Pilot Fish FAQ"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:50
+msgid ", or find Danni on Twitter @danni1990"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:58
+msgid "Google Analytics"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:61
+msgid "Add Google Analytics to footer"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:70
+msgid "Google Analytics Tracking Code"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:73
+msgid "UA-XXXXX-X"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:82
+msgid "Page Hierarchy"
+msgstr "ページの階層:"
+
+#: pilot-fish/includes/theme-options.php:85
+msgid "Add Child Page links to Pages"
+msgstr ""
+
+#: pilot-fish/includes/theme-options.php:91
+msgid "Save Options"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:63
+msgid "Projects"
+msgstr "作品"
+
+#: pilot-fish/includes/scripts.php:64
+msgid "Project"
+msgstr "作品"
+
+#: pilot-fish/includes/scripts.php:93 pilot-fish/includes/scripts.php:94
+#, fuzzy
+msgid "Project Type"
+msgstr "作品"
+
+#: pilot-fish/includes/scripts.php:95
+msgid "Search Project Types"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:96
+#, fuzzy
+msgid "All Project Types"
+msgstr "作品"
+
+#: pilot-fish/includes/scripts.php:97
+msgid "Parent Project Type"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:98
+msgid "Parent Project Type:"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:99
+msgid "Edit Project Type"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:100
+msgid "Update Project Type"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:101
+msgid "Add New Project Type"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:102
+#, fuzzy
+msgid "New Project Type"
+msgstr "作品"
+
+#: pilot-fish/includes/scripts.php:116
+msgid "Skills"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:117
+msgid "Skill"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:118
+#, fuzzy
+msgid "Search Skills"
+msgstr "サイト内検索"
+
+#: pilot-fish/includes/scripts.php:119
+msgid "All Skills"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:120
+msgid "Parent Skill"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:121
+msgid "Parent Skill:"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:122
+msgid "Edit Skill"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:123
+msgid "Update Skill"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:124
+msgid "Add New Skill"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:125
+msgid "New Skill Name"
+msgstr ""
+
+#: pilot-fish/includes/scripts.php:152
+msgid "Untitled"
+msgstr "無題"
+
+#: pilot-fish/includes/scripts.php:180
+msgid "Continue Reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "続きを読む <span class=\"meta-nav\">&rarr;</span>"
+
+#: pilot-fish/includes/widgets.php:6
+msgid "Primary Sidebar"
+msgstr ""
+
+#: pilot-fish/includes/widgets.php:14
+msgid "Footer One"
+msgstr "Footer One"
+
+#: pilot-fish/includes/widgets.php:22
+msgid "Footer Two"
+msgstr "Footer Two"
+
+#: pilot-fish/includes/widgets.php:30
+msgid "Footer Three"
+msgstr "Footer Three"
+
+#: pilot-fish/includes/widgets.php:38
+msgid "Featured One"
+msgstr "Featured One"
+
+#: pilot-fish/includes/widgets.php:46
+msgid "Featured Two"
+msgstr "Featured Two"
+
+#: pilot-fish/includes/widgets.php:54
+msgid "Featured Three"
+msgstr "Featured Three"
+
+#: pilot-fish/includes/widgets.php:70
+msgid "Use this widget to add a vCard"
+msgstr "Use this widget to add a vCard"
+
+#: pilot-fish/includes/widgets.php:71
+msgid "pilotfish: vCard"
+msgstr "パイロットフィッシュ: 電子名刺"
+
+#: pilot-fish/includes/widgets.php:98
+msgid "vCard"
+msgstr "電子名刺"
+
+#: pilot-fish/includes/widgets.php:164
+msgid "Title (optional):"
+msgstr "タイトル"
+
+#: pilot-fish/includes/widgets.php:168
+msgid "Street Address:"
+msgstr "住所:"
+
+#: pilot-fish/includes/widgets.php:172
+msgid "City/Locality:"
+msgstr "市区町村:"
+
+#: pilot-fish/includes/widgets.php:176
+msgid "State/Region:"
+msgstr "都道府県:"
+
+#: pilot-fish/includes/widgets.php:180
+msgid "Zipcode/Postal Code:"
+msgstr "郵便番号:"
+
+#: pilot-fish/includes/widgets.php:184
+msgid "Telephone:"
+msgstr "携帯番号:"
+
+#: pilot-fish/includes/widgets.php:188
+msgid "Email:"
+msgstr "メールアドレス:"
