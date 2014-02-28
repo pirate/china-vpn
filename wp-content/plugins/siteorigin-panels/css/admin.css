@@ -28,6 +28,11 @@ html {
 	float: left;
 	margin-bottom: 10px;
 	padding: 0 5px;
+	-ms-user-select: none;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
 }
 
 .panel-type-list .panel-type h3 {
@@ -70,6 +75,14 @@ html {
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+#panels-container {
+	-ms-user-select: none;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
 #panels-container .grid-wrapper h4 {
 	margin: 5px 1px;
 }
@@ -78,7 +91,7 @@ html {
 	position: relative;
 	
 	background: #edf8fe url("images/cell-selected.png") repeat;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 }
 
 #panels-container .grid .ui-resizable-handle.ui-resizable-w {
@@ -530,6 +543,11 @@ html {
 	margin-bottom: -6px;
 	margin-left: 35px;
 	overflow: hidden; /* Now for the off state */ 
+	-ms-user-select: none; /* Now for the off state */ 
+	-moz-user-select: -moz-none; /* Now for the off state */ 
+	-khtml-user-select: none; /* Now for the off state */ 
+	-webkit-user-select: none; /* Now for the off state */ 
+	user-select: none;
 }
 
 #panels-toggle-switch .handle {
@@ -1107,5 +1125,32 @@ html {
 	background: url(./images/pointer.png);
 	content: '';
 	display: block;
+}
+
+#grid-styles-dialog p {
+	margin-bottom: 20px;
+}
+
+#grid-styles-dialog p:last-child {
+	margin-bottom: 0;
+}
+
+#grid-styles-dialog label {
+	width: 160px;
+	
+	display: inline-block;
+	font-weight: bold;
+}
+
+#grid-styles-dialog label.siteorigin-panels-checkbox-label {
+	width: auto;
+	
+	display: inline;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-touch-callout: none;
 }
 

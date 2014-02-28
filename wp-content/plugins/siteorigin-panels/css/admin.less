@@ -20,6 +20,12 @@ html {
     min-height: 10px;
 
 	.panel-type {
+		-ms-user-select: none; /* IE 10+ */
+		-moz-user-select: -moz-none;
+		-khtml-user-select: none;
+		-webkit-user-select: none;
+		user-select: none;
+
 		.box-sizing(border-box);
 	    width: 25%;
 	    padding: 0 5px;
@@ -60,12 +66,18 @@ html {
 
 #panels-container {
 
+	-ms-user-select: none;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+
 	.grid-wrapper h4 {
 		margin: 5px 1px;
 	}
 
 	.grid {
-		margin-bottom: 20px;
+		margin-bottom: 30px;
 		position: relative;
 		background: #edf8fe url("images/cell-selected.png") repeat;
 
@@ -494,6 +506,12 @@ html {
     display: inline-block;
     width: 75px;
     height: 28px;
+
+	-ms-user-select: none; /* IE 10+ */
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
 
     background: #67afd8;
 
@@ -946,5 +964,32 @@ html {
 		width: 8px;
 		height: 4px;
 		background: url(./images/pointer.png);
+	}
+}
+
+#grid-styles-dialog {
+	p {
+		margin-bottom: 20px;
+	}
+
+	p:last-child {
+		margin-bottom: 0;
+	}
+
+	label{
+		display: inline-block;
+		font-weight: bold;
+		width: 160px;
+	}
+
+	label.siteorigin-panels-checkbox-label {
+		display: inline;
+		width: auto;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 	}
 }

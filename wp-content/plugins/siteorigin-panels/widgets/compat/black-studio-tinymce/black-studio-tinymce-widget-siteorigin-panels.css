@@ -7,6 +7,10 @@
 	padding-right: 0 !important;
 }
 
+.widget-dialog-wp_widget_black_studio_tinymce .mceLayout {
+	clear: both;
+}
+
 .widget-dialog-wp_widget_black_studio_tinymce .mceLayout td {
 	border: 1px solid #dedede;
 	border-width: 0 1px 1px 1px;

@@ -106,8 +106,7 @@ jQuery( function ( $ ) {
             if (e.keyCode === $.ui.keyCode.ESCAPE) {
                 $(this ).dialog('close');
             }
-        })
-        .find( '.panel-type' ).disableSelection();
+        });
     
     $( '#so-panels-panels .handlediv' ).click( function () {
         // Trigger the resize to reorganise the columns
@@ -271,42 +270,17 @@ jQuery( function ( $ ) {
             .click(function(){
                 $(this ).toggleClass('state-off').toggleClass('state-on' ).removeClass('subtle-move');
                 $('#panels-home-enabled' ).val( $(this ).hasClass('state-off') ? 'false' : 'true' );
-            } )
-            .add('#panels-toggle-switch *').disableSelection();
+            } );
 
         // Handle the previews
         $('#post-preview' ).click(function(event){
             var form = $('#panels-container' ).closest('form');
             var originalAction = form.attr('action');
             form.attr('action', panels.previewUrl ).attr('target', '_blank').submit().attr('action', originalAction).attr('target', '_self');
-            clearFormCloned();
             event.preventDefault();
         });
     }
 
-    var cloned = [];
-    $('form#post, form#panels-home-page-form').submit( function(e){
-        var $form = $(this);
-
-        // Clear the old form wrapper and copy across all the dialog forms so they're included when we submit
-        clearFormCloned();
-
-        $('#panels .panel').each( function(){
-            var dialog = $(this).data('dialog');
-            dialog.trigger('panelscloneprepare');
-            cloned.push( dialog.clone().hide().appendTo($form) );
-        } );
-        
-    } );
-
-    var clearFormCloned = function(){
-        $.each(cloned, function(i, el){
-            el.remove();
-        });
-        cloned = [];
-    }
-
     // Add a hidden field to show that the JS is complete. If this doesn't run we assume that JS is broken and the interface hasn't loaded properly
     $('#panels').append('<input name="panels_js_complete" type="hidden" value="1" />');
-
 } );

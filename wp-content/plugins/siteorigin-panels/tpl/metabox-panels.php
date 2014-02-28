@@ -76,20 +76,9 @@ $layouts = apply_filters('siteorigin_panels_prebuilt_layouts', array());
 		</div>
 	<?php endif; ?>
 
-	<?php // The select row style modal ?>
-
-	<div id="panels-row-style-select">
-		<ul>
-			<li data-value=""><?php esc_html_e('none', 'siteorigin-panels') ?></li>
-			<?php
-			$row_styles = apply_filters('siteorigin_panels_row_styles', array());
-			if(is_array($row_styles) && !empty($row_styles)){
-				foreach($row_styles as $id => $name) {
-					?><li data-value="<?php echo esc_attr($id) ?>"><?php echo esc_html($name) ?></li><?php
-				}
-			}
-			?>
-		</ul>
+	<?php // The styles dialog ?>
+	<div id="grid-styles-dialog" data-title="<?php esc_attr_e('Row Visual Style','siteorigin-panels') ?>" class="panels-admin-dialog">
+		<?php siteorigin_panels_style_dialog_form() ?>
 	</div>
 
 	<?php wp_nonce_field('save', '_sopanels_nonce') ?>

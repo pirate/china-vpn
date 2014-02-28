@@ -7,9 +7,16 @@
  * @return mixed
  */
 function siteorigin_panels_setting($key = ''){
-	static $settings;
 
-	if(empty($settings)){
+	if( has_action('after_setup_theme') ) {
+		// Only use static settings if we've initialized the theme
+		static $settings;
+	}
+	else {
+		$settings = false;
+	}
+
+	if( empty($settings) ){
 		$display_settings = get_option('siteorigin_panels_display', array());
 
 		$settings = get_theme_support('siteorigin-panels');

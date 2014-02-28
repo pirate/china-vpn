@@ -59,6 +59,7 @@
      * @return {*}
      */
     panels.createGrid = function ( cells, weights, style ) {
+
         if ( weights == null || weights.length == 0 ) {
             weights = [];
             for ( var i = 0; i < cells; i++ ) {
@@ -66,7 +67,7 @@
             }
         }
 
-        if(typeof style == 'undefined') style = '';
+        if(typeof style == 'undefined') style = {};
 
         var weightSum = 0;
         for (var index in weights) {
@@ -78,7 +79,20 @@
         // Add the hidden field to store the grid order
         container.append( $( '<input type="hidden" name="grids[' + gridId + '][cells]" />' ).val( cells ) );
 
-        var styleInput = $( '<input type="hidden" name="grids[' + gridId + '][style]" />' ).val(style).appendTo(container);
+        // Load the inputs required for the style
+        var styleInput = {};
+        for(var fieldName in panelsStyleFields) {
+
+            styleInput[fieldName] = $( '<input type="hidden" name="grids[' + gridId + '][style][' + fieldName + ']" data-style-field="' + fieldName + '" />' ).appendTo(container);
+            if(typeof style[fieldName] != 'undefined') {
+                if(panelsStyleFields[fieldName]['type'] == 'checkbox') {
+                    styleInput[fieldName].val( style[fieldName] ? 'true' : '' );
+                }
+                else {
+                    styleInput[fieldName].val(style[fieldName]);
+                }
+            }
+        }
 
         container
             .append(
@@ -100,7 +114,7 @@
                                     $(this ).find('.panel' ).each(function(j, el){
                                         containerData[i]['widgets'][j] = {
                                             type : $(this ).attr('data-type'),
-                                            data : $(this ).getPanelData()
+                                            data : $(this ).panelsGetPanelData()
                                         }
                                     })
                                 });
@@ -169,10 +183,6 @@
 
                                 // Finally, remove the grid container
                                 var remove = function () {
-                                    // Remove all the panel dialogs
-                                    container.find('.panel').each(function(){
-                                        $(this).data('dialog').dialog('destroy').remove();
-                                    });
                                     // Remove the container
                                     container.remove();
 
@@ -197,25 +207,8 @@
                         $( '<div class="ui-button ui-button-icon-only panels-visual-style"><div class="ui-icon ui-icon-gear"></div></div>' )
                             .attr( 'data-tooltip', 'Visual Style' )
                             .click( function(){
-                                if($('#panels-row-style-select').is(':visible') && $('#panels-row-style-select').data('panels-row') == container){
-                                    $('#panels-row-style-select').fadeOut();
-                                    return;
-                                }
-
-                                // Display the dropdown form
-                                $('#panels-row-style-select')
-                                    .hide()
-                                    .fadeIn()
-                                    .css({
-                                        top: container.position().top + 28,
-                                        right: -1
-                                    })
-                                    .data('panels-row', container)
-                                    .find('li').removeClass('selected').unbind('click').click(function(){
-                                        var $$ = $(this).addClass('selected');
-                                        styleInput.val($$.data('value'));
-                                        $('#panels-row-style-select').fadeOut();
-                                    }).filter('[data-value="'+styleInput.val()+'"]').addClass('selected');
+                                // This is where we need to handle the new style dialog
+                                panels.loadStyleValues(container);
                             } )
                     )
                     // Add the move/reorder button
@@ -225,7 +218,7 @@
             );
 
         // Hide the row style button if none are available
-        if( $('#panels-row-style-select li').length == 1 ) {
+        if( ! Object.keys(panelsStyleFields).length ) {
             container.find('.panels-visual-style').remove();
         }
 
@@ -333,7 +326,7 @@
                 placeholder:"ui-state-highlight",
                 connectWith:".panels-container",
                 tolerance:  'pointer',
-                change:     function (ui) {
+                change: function (ui) {
                     var thisContainer = $('#panels-container .ui-state-highlight' ).closest('.cell' ).get(0);
                     if(typeof this.lastContainer != 'undefined' && this.lastContainer != thisContainer){
                         // Resize the new and the last containers
@@ -348,35 +341,27 @@
                 helper: function(e, el){
                     return el.clone().css('opacity', panels.animations ? 0.9 : 1).addClass('panel-being-dragged');
                 },
-                stop:       function (ui, el) {
-                    // Refresh all the cell sizes after we stop sorting
+                stop: function (ui, el) {
                     $( '#panels-container .grid-container' ).each( function () {
                         $(this).panelsResizeCells();
                     } );
                 },
-                receive:    function () {
+                receive: function () {
                     $( this ).trigger( 'refreshcells' );
                 }
             } )
             .bind( 'refreshcells', function () {
                 // Set the cell for each panel
-                // Refresh all the cell sizes after we stop sorting
-                $( '#panels-container .grid-container' ).each( function () {
-                    $(this).panelsResizeCells(true);
-                } );
-
                 $( '#panels-container .panel' ).each( function () {
                     var container = $( this ).closest( '.grid-container' );
-
-                    $( this).data('dialog').find( 'input[name$="[info][grid]"]' ).val( $( '#panels-container .grid-container' ).index( container ) );
-                    $( this ).data('dialog').find( 'input[name$="[info][cell]"]' ).val( container.find( '.cell' ).index( $( this ).closest( '.cell' ) ) );
+                    $( this).find( 'input[name$="[info][grid]"]' ).val( $( '#panels-container .grid-container' ).index( container ) );
+                    $( this ).find( 'input[name$="[info][cell]"]' ).val( container.find( '.cell' ).index( $( this ).closest( '.cell' ) ) );
                 } );
 
                 $( '#panels-container .cell' ).each( function () {
                     $( this ).find( 'input[name$="[grid]"]' ).val( $( '#panels-container .grid-container' ).index( $( this ).closest( '.grid-container' ) ) );
                 } );
-            } )
-            .disableSelection();
+            } );
     }
 
     /**

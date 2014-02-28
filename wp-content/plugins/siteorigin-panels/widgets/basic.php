@@ -347,8 +347,8 @@ class SiteOrigin_Panels_Widgets_PostLoop extends WP_Widget{
 		$template_dirs = array_unique($template_dirs);
 		foreach($template_dirs  as $dir ){
 			foreach($template_files as $template_file) {
-				foreach(glob($dir.'/'.$template_file) as $file) {
-					$templates[] = str_replace($dir.'/', '', $file);
+				foreach((array) glob($dir.'/'.$template_file) as $file) {
+					if( file_exists( $file ) ) $templates[] = str_replace($dir.'/', '', $file);
 				}
 			}
 		}
@@ -383,8 +383,8 @@ class SiteOrigin_Panels_Widgets_PostLoop extends WP_Widget{
 		));
 
 		$templates = $this->get_loop_templates();
-		if(empty($templates)) {
-			?><p><?php _e("Unfortunately your theme doesn't have any post loops.", 'siteorigin-panels') ?></p><?php
+		if( empty($templates) ) {
+			?><p><?php _e("Your theme doesn't have any post loops.", 'siteorigin-panels') ?></p><?php
 			return;
 		}
 

@@ -1,8 +1,8 @@
 === Page Builder by SiteOrigin ===
 Contributors: gpriday
 Tags: page builder, responsive, widget, widgets, builder, page, admin, gallery, content, cms, pages, post, css, layout, grid
-Requires at least: 3.5
-Tested up to: 3.8
+Requires at least: 3.6
+Tested up to: 3.8.1
 Stable tag: trunk
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -89,6 +89,24 @@ Page Builder is actively developed and updated, so generally I'd recommend that 
 I've tried to ensure that Page Builder is compatible with most plugin widgets. It's best to just download Page Builder and test for yourself.
 
 == Changelog ==
+
+= 1.4.6 =
+* Widgets are now only run through their update function when modified.
+* Fixed gallery widget.
+
+= 1.4.5 =
+* Fixed an issue with copy content.
+* Improved handling of styles in prebuilt layouts.
+* Improved error handling in Javascript.
+* Fixed issue with checkboxes.
+
+= 1.4.4 =
+* Generating Page Builder content in admin is now generated with a separate request to properly handle fatal errors from widgets.
+* Fixed potential issue when loading home page interface.
+* Added a way for themes to specify more advanced row styles.
+* Dialogs and widget forms are now only loaded when needed in order to improve performance on large pages.
+* Fixed several performance bottle necks.
+* Page Builder data is now saved with auto save and revisions.
 
 = 1.4.3 =
 * Improved HTML5 validation be moving styles to header and footer.

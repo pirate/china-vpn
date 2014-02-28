@@ -6,9 +6,11 @@
  */
 
 jQuery(function($){
+
     var originalInsert = wp.media.editor.insert;
     
     wp.media.editor.insert = function(h){
+
         // Check that panels tab is active and that no dialogs are open.
         if( !$('#wp-content-wrap').hasClass('panels-active') ) return originalInsert(h);
         if( $('.panel-dialog:visible').length > 0 ) return originalInsert(h);
@@ -19,10 +21,9 @@ jQuery(function($){
             var ids = attachments.models.map(function(e){ return e.id });
 
             // Create a new gallery panel
-            // TODO support random and column arguments
             var panel = $('#panels-dialog').panelsCreatePanel('SiteOrigin_Panels_Widgets_Gallery', {
                 'ids' : ids.join(',') 
-            });
+            } );
             
             // The panel couldn't be created. Possible the widgets gallery isn't being used.
             if(panel == null) originalInsert(h);
@@ -86,18 +87,15 @@ jQuery(function($){
             var $$ = $(this);
 
             var dialog = $('.panels-admin-dialog:visible' );
+
             var val = dialog.find('*[name$="[ids]"]').val();
             if(val.indexOf('{demo') === 0 || val.indexOf('{default') === 0) val = '-'; // This removes the demo or default content
             if(val == '' && $('#post_ID' ).val() == null) val = '-';
-
-            // Close the gallery dialog so it doesn't interfere with wp.media.gallery
-            dialog.find('.ui-dialog-content' ).dialog('close');
 
             var frame = wp.media.gallery.edit('[gallery ids="' + val + '"]');
 
             // When the gallery-edit state is updated, copy the attachment ids across
             frame.state('gallery-edit').on( 'update', function( selection ) {
-                dialog.find('.ui-dialog-content' ).dialog('open');
                 var ids = selection.models.map(function(e){ return e.id });
 
                 dialog.find('input[name$="[ids]"]' ).val(ids.join(','));
