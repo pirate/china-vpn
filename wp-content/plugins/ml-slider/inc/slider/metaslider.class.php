@@ -108,6 +108,7 @@ class MetaSlider {
             'center' => false,
             'smartCrop' => true,
             'carouselMode' => false,
+            'carouselMargin' => 5,
             'easing' => 'linear',
             'autoPlay' => true,
             'thumb_width' => 150,

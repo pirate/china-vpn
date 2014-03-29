@@ -97,6 +97,5 @@ Supports Thumbs: true
 }
 .theme-light .nivo-controlNav.nivo-thumbs-enabled img {
 	display: block;
-	width: 120px;
 	height: auto;
 }

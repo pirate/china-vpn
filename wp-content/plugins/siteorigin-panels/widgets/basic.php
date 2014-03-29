@@ -56,13 +56,13 @@ class SiteOrigin_Panels_Widgets_Gallery extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'size' ) ?>"><?php _e( 'Image Size', 'siteorigin-panels' ) ?></label>
 			<select name="<?php echo $this->get_field_name( 'size' ) ?>" id="<?php echo $this->get_field_id( 'size' ) ?>">
-				<option value="" <?php selected(empty($instance['image_size'])) ?>><?php esc_html_e('Default', 'siteorigin-panels') ?></option>
-				<option value="large" <?php selected('large', $instance['image_size']) ?>><?php esc_html_e( 'Large', 'siteorigin-panels' ) ?></option>
-				<option value="medium" <?php selected('medium', $instance['image_size']) ?>><?php esc_html_e( 'Medium', 'siteorigin-panels' ) ?></option>
-				<option value="thumbnail" <?php selected('thumbnail', $instance['image_size']) ?>><?php esc_html_e( 'Thumbnail', 'siteorigin-panels' ) ?></option>
-				<option value="full" <?php selected('full', $instance['image_size']) ?>><?php esc_html_e( 'Full', 'siteorigin-panels' ) ?></option>
+				<option value="" <?php selected(empty($instance['size'])) ?>><?php esc_html_e('Default', 'siteorigin-panels') ?></option>
+				<option value="large" <?php selected('large', $instance['size']) ?>><?php esc_html_e( 'Large', 'siteorigin-panels' ) ?></option>
+				<option value="medium" <?php selected('medium', $instance['size']) ?>><?php esc_html_e( 'Medium', 'siteorigin-panels' ) ?></option>
+				<option value="thumbnail" <?php selected('thumbnail', $instance['size']) ?>><?php esc_html_e( 'Thumbnail', 'siteorigin-panels' ) ?></option>
+				<option value="full" <?php selected('full', $instance['size']) ?>><?php esc_html_e( 'Full', 'siteorigin-panels' ) ?></option>
 				<?php if(!empty($_wp_additional_image_sizes)) : foreach ( $_wp_additional_image_sizes as $name => $info ) : ?>
-					<option value="<?php echo esc_attr( $name ) ?>" <?php selected($name, $instance['image_size']) ?>><?php echo esc_html( $name ) ?></option>
+					<option value="<?php echo esc_attr( $name ) ?>" <?php selected($name, $instance['size']) ?>><?php echo esc_html( $name ) ?></option>
 				<?php endforeach; endif; ?>
 			</select>
 		</p>

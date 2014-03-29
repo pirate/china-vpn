@@ -14,7 +14,7 @@ class MetaSliderImageHelper {
 
     /**
      * Constructor
-     * 
+     *
      * @param integer $slide_id
      * @param integer $width - required width of image
      * @param integer $height - required height of image
@@ -34,11 +34,11 @@ class MetaSliderImageHelper {
 
     /**
      * Return the crop dimensions.
-     * 
+     *
      * Smart Crop: If the image is smaller than the container width or height, then return
-     * dimensions that respect the container size ratio. This ensures image displays in a 
+     * dimensions that respect the container size ratio. This ensures image displays in a
      * sane manner in responsive sliders
-     * 
+     *
      * @param integer $image_width
      * @param integer $image_height
      * @return array image dimensions
@@ -157,56 +157,43 @@ class MetaSliderImageHelper {
 
     /**
      * Return the image URL, crop the image to the correct dimensions if required
-     * 
+     *
      * @return string resized image URL
      */
     function get_image_url() {
         // Get the image file path
         if (!strlen($this->path)) {
-            return $this->url;
+            return apply_filters('metaslider_resized_image_url', $this->url, $this->url);
         }
 
-        // if the file exists, just return it without going any further
-        $dest_file_name = $this->get_destination_file_name(array(
-	        	'width' => $this->container_width, 
-	        	'height' => $this->container_height
-        	)
-        );
-
-        if (file_exists($dest_file_name)) {
-            return str_replace(basename($this->url), basename($dest_file_name), $this->url);
-        }
-
-        // file doesn't exist, detect required size
+        // get the full image size dimensions
         $orig_size = $this->get_original_image_dimensions();
 
-        // bail out if we can't find the image dimensions
+        // bail out if we can't find the image dimensions, return the full URL
         if ($orig_size == false) {
-            return $this->url;
+            return apply_filters('metaslider_resized_image_url', $this->url, $this->url);
         }
 
-        // required size
+        // get our crop dimensions (this is the size we want to display)
         $dest_size = $this->get_crop_dimensions($orig_size['width'], $orig_size['height']);
 
-        // check if a resize is needed
+        // if the full size is the same as the required size, return the full URL
         if ($orig_size['width'] == $dest_size['width'] && $orig_size['height'] == $dest_size['height']) {
-            return $this->url;
+            return apply_filters('metaslider_resized_image_url', $this->url, $this->url);
         }
 
+        // construct the file name
         $dest_file_name = $this->get_destination_file_name($dest_size);
 
-        if (file_exists($dest_file_name)) 
-        {
+        if (file_exists($dest_file_name)) {
             // good. no need for resize, just return the URL
             $dest_url = str_replace(basename($this->url), basename($dest_file_name), $this->url);
-        } 
-        else if ($this->use_image_editor) 
-        {
+        }
+        else if ($this->use_image_editor) {
             // resize, assuming we're allowed to use the image editor
             $dest_url = $this->resize_image($orig_size, $dest_size, $dest_file_name);
         }
-        else 
-        {
+        else {
             // fall back to the full URL
             $dest_url = $this->url;
         }
@@ -218,9 +205,9 @@ class MetaSliderImageHelper {
 
     /**
      * Get the image dimensions for the original image.
-     * 
+     *
      * Fall back to using the WP_Image_Editor if the size is not stored in metadata
-     * 
+     *
      * @return array
      */
     private function get_original_image_dimensions() {
@@ -236,7 +223,7 @@ class MetaSliderImageHelper {
         if ($this->use_image_editor) {
             // get the size from the image itself
             $image = wp_get_image_editor($this->path);
-            
+
             if (!is_wp_error($image)) {
                 $size = $image->get_size();
                 return $size;
@@ -248,9 +235,9 @@ class MetaSliderImageHelper {
 
     /**
      * Return the file name for the required image size
-     * 
+     *
      * @param array $dest_size image dimensions (width/height) in pixels
-     * @return string 
+     * @return string
      */
     private function get_destination_file_name($dest_size) {
         $info = pathinfo($this->path);
@@ -264,7 +251,7 @@ class MetaSliderImageHelper {
 
     /**
      * Use WP_Image_Editor to create a resized image and return the URL for that image
-     * 
+     *
      * @param array $orig_size
      * @param array $dest_size
      * @return string
@@ -277,14 +264,10 @@ class MetaSliderImageHelper {
         if (is_wp_error($image)) {
             if (is_admin()) {
                 echo '<div id="message" class="error">';
-                echo "<p><strong>ERROR</strong> " . $image->get_error_message() . " Check <a href='http://codex.wordpress.org/Changing_File_Permissions' target='_blank'>file permissions</a></p>";
-                echo "<button class='toggle'>Show Details</button>";
-                echo "<div class='message' style='display: none;'><br />Slide ID: {$this->id}<pre>";
-                var_dump($image); 
-                echo "</pre></div>";
+                echo "<p><strong>ERROR</strong> Slide ID: {$this->id} - <i>" . $image->get_error_message() . "</i></p>";
                 echo "</div>";
             }
-            
+
             return $this->url;
         }
 

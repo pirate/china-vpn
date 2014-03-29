@@ -16,8 +16,6 @@ Build responsive page layouts using the widgets you know and love using this sim
 
 WordPress has evolved into a fully functional CMS. Page Builder (previously called Panels) completes the transition by giving you a way to create responsive column layouts using the widgets you know and love.
 
-[Our newsletter](http://eepurl.com/hbvhM) is a great place to stay up to date with Page Builder and the rest of our free WordPress products.
-
 = Use Your Widgets =
 
 You know widgets. They're the things you add to your sidebars. Page Builder makes all your widgets even more useful by turning them into the building blocks of your pages.
@@ -30,7 +28,7 @@ Page Builder works with most well made themes. The only requirement is that your
 
 There are loads free and premium themes that work with the Page Builder, we have our own collection of [free themes](http://siteorigin.com/) if you'd like to use one of ours.
 
-[Documentation](http://siteorigin.com/page-builder/documentation/) for Page Builder is available on SiteOrigin.
+Page Builder [Documentation](http://siteorigin.com/page-builder/documentation/) is available on SiteOrigin and we offer free support on our [support forum](http://siteorigin.com/threads/plugin-page-builder/). If you're having strange issues, try following [this guide](http://siteorigin.com/troubleshooting/identifying-plugin-conflicts/).
 
 = Bundled Widgets =
 
@@ -89,6 +87,11 @@ Page Builder is actively developed and updated, so generally I'd recommend that 
 I've tried to ensure that Page Builder is compatible with most plugin widgets. It's best to just download Page Builder and test for yourself.
 
 == Changelog ==
+
+= 1.4.7 =
+* Fixed size problem in gallery widget.
+* Compatibility fixes with WordPress 3.9.
+* Added checks to prevent total content loss in some situations.
 
 = 1.4.6 =
 * Widgets are now only run through their update function when modified.

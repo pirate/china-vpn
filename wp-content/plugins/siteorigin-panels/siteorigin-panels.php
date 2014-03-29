@@ -3,7 +3,7 @@
 Plugin Name: Page Builder by SiteOrigin
 Plugin URI: http://siteorigin.com/page-builder/
 Description: A drag and drop, responsive page builder that simplifies building your website.
-Version: 1.4.6
+Version: 1.4.7
 Author: Greg Priday
 Author URI: http://siteorigin.com
 License: GPL3
@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: http://siteorigin.com/page-builder/donate/
 */
 
-define('SITEORIGIN_PANELS_VERSION', '1.4.6');
+define('SITEORIGIN_PANELS_VERSION', '1.4.7');
 define('SITEORIGIN_PANELS_BASE_FILE', __FILE__);
 
 include plugin_dir_path(__FILE__).'widgets/basic.php';
@@ -295,6 +295,12 @@ function siteorigin_panels_admin_enqueue_styles() {
 	$screen = get_current_screen();
 	if ( in_array( $screen->id, siteorigin_panels_setting('post-types') ) || $screen->base == 'appearance_page_so_panels_home_page') {
 		wp_enqueue_style( 'so-panels-admin', plugin_dir_url(__FILE__) . 'css/admin.css' );
+
+		global $wp_version;
+		if( version_compare( $wp_version, '3.9.beta.1', '<' ) ) {
+			wp_enqueue_style( 'so-panels-admin-jquery-ui', plugin_dir_url(__FILE__) . 'css/jquery-ui.css' );
+		}
+
 		wp_enqueue_style( 'so-panels-chosen', plugin_dir_url(__FILE__) . 'js/chosen/chosen.css' );
 		do_action( 'siteorigin_panel_enqueue_admin_styles' );
 	}
@@ -319,9 +325,9 @@ function siteorigin_panels_add_help_tab($prefix) {
 		) );
 	}
 }
-add_action('load-page.php', 'siteorigin_panels_add_help_tab');
-add_action('load-post-new.php', 'siteorigin_panels_add_help_tab');
-add_action('load-appearance_page_so_panels_home_page', 'siteorigin_panels_add_help_tab');
+add_action('load-page.php', 'siteorigin_panels_add_help_tab', 12);
+add_action('load-post-new.php', 'siteorigin_panels_add_help_tab', 12);
+add_action('load-appearance_page_so_panels_home_page', 'siteorigin_panels_add_help_tab', 12);
 
 /**
  * Display the content for the help tab.
@@ -600,7 +606,7 @@ function siteorigin_panels_render( $post_id = false, $enqueue_css = true, $panel
 		if($post_id == 'home'){
 			$panels_data = get_option( 'siteorigin_panels_home_page', get_theme_mod('panels_home_page', null) );
 
-			if(is_null($panels_data)){
+			if( is_null($panels_data) ){
 				// Load the default layout
 				$layouts = apply_filters('siteorigin_panels_prebuilt_layouts', array());
 				$panels_data = !empty($layouts['home']) ? $layouts['home'] : current($layouts);
@@ -1055,3 +1061,9 @@ function siteorigin_panels_render_form($widget, $instance = array(), $raw = fals
 	// Add all the information fields
 	return $form;
 }
+
+function siteorigin_panels_plugin_action_links($links) {
+	$links[] = '<a href="http://siteorigin.com/threads/plugin-page-builder/">'.__('Support Forum', 'siteorigin-panels').'</a>';
+	return $links;
+}
+add_action('plugin_action_links_' . plugin_basename(__FILE__), 'siteorigin_panels_plugin_action_links');

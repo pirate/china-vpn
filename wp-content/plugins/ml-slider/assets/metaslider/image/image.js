@@ -4,7 +4,7 @@
 (function ($) {
 	$(function () {
 		var file_frame;
-		
+
 		jQuery('.metaslider .add-slide').on('click', function(event){
 			event.preventDefault();
 
@@ -23,6 +23,10 @@
 
 			// When an image is selected, run a callback.
 			file_frame.on('insert', function() {
+
+				jQuery(".metaslider .spinner").show();
+                jQuery(".metaslider input[type=submit]").attr('disabled', 'disabled');
+
 				var selection = file_frame.state().get('selection');
 				var slide_ids = [];
 

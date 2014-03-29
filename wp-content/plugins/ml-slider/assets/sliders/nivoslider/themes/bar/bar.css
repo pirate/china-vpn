@@ -88,12 +88,12 @@ Supports Thumbs: false
 }
 .theme-bar a.nivo-nextNav { right: -50px; }
 .theme-bar a.nivo-prevNav { left: -50px; }
-.theme-bar:hover a.nivo-nextNav { 
-    right: 15px; 
+.theme-bar:hover a.nivo-nextNav {
+    right: 15px;
     opacity: 1;
 }
-.theme-bar:hover a.nivo-prevNav { 
-    left: 15px; 
+.theme-bar:hover a.nivo-prevNav {
+    left: 15px;
     opacity: 1;
 }
 .theme-bar .nivo-directionNav a:hover { color: #ddd; }
@@ -127,6 +127,5 @@ Supports Thumbs: false
 }
 .theme-bar .nivo-controlNav.nivo-thumbs-enabled img {
 	display: block;
-	width: 120px;
 	height: auto;
 }

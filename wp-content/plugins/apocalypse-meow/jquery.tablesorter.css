@@ -1,0 +1,24 @@
+table.tablesorter thead tr .header, table.tablesorter thead tr .headerSortUp, table.tablesorter thead tr .headerSortDown {
+	position: relative;
+	cursor: pointer;
+}
+table.tablesorter thead tr .header:after, table.tablesorter thead tr .headerSortUp:after, table.tablesorter thead tr .headerSortDown:after {
+	content: '';
+	width: 7px;
+	position: absolute;
+	left: 7px;
+	background: transparent url('jquery.tablesorter.png') scroll 0 0 no-repeat;
+}
+table.tablesorter thead tr .header:after {
+	height: 9px;
+	top: 13px;
+}
+table.tablesorter thead tr .headerSortUp:after {
+	height: 4px;
+	top: 13px;
+}
+table.tablesorter thead tr .headerSortDown:after {
+	height: 4px;
+	background-position: 0 -5px;
+	top: 18px;
+}

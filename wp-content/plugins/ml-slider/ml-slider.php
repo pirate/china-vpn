@@ -3,7 +3,7 @@
  * Plugin Name: Meta Slider
  * Plugin URI: http://www.metaslider.com
  * Description: Easy to use slideshow plugin. Create SEO optimised responsive slideshows with Nivo Slider, Flex Slider, Coin Slider and Responsive Slides.
- * Version: 2.6.3
+ * Version: 2.7.1
  * Author: Matcha Labs
  * Author URI: http://www.matchalabs.com
  * License: GPLv2 or later
@@ -17,7 +17,7 @@
 // disable direct access
 if (!defined('ABSPATH')) exit;
 
-define('METASLIDER_VERSION', '2.6.3');
+define('METASLIDER_VERSION', '2.7.1');
 define('METASLIDER_BASE_URL', plugins_url('ml-slider') . '/'); //plugin_dir_url(__FILE__)
 define('METASLIDER_ASSETS_URL', METASLIDER_BASE_URL . 'assets/');
 define('METASLIDER_BASE_DIR_LONG', dirname(__FILE__));
@@ -54,6 +54,13 @@ class MetaSliderPlugin {
     var $slider = null;
 
     /**
+     * Init
+     */
+    public static function init() {
+        $metaslider = new MetaSliderPlugin;
+    }
+
+    /**
      * Constructor
      */
     public function __construct() {
@@ -77,7 +84,7 @@ class MetaSliderPlugin {
         add_action('media_upload_layer', array($this, 'metaslider_pro_tab'));
 
         add_filter('media_buttons_context', array($this, 'insert_metaslider_button'));
-        add_action('admin_footer', array($this, 'admin_footer'));
+        add_action('admin_footer', array($this, 'admin_footer'), 11);
 
         // add 'go pro' link to plugin options
         $plugin = plugin_basename(__FILE__);
@@ -206,16 +213,6 @@ class MetaSliderPlugin {
      * Register admin JavaScript
      */
     public function register_admin_scripts() {
-        if (wp_script_is('wp-auth-check', 'queue')) {
-            // meta slider checks for active AJAX requests in order to show the spinner
-            // .. but the auth-check runs an AJAX request every 15 seconds
-            // deregister the script that displays the login panel if the user becomes logged
-            // out at some point
-            // todo: implement some more intelligent request checking
-            wp_deregister_script('wp-auth-check');
-            wp_register_script('wp-auth-check', null); // fix php notice
-        }
-
         // media library dependencies
         wp_enqueue_media();
 
@@ -226,6 +223,8 @@ class MetaSliderPlugin {
         wp_enqueue_script('metaslider-tipsy', METASLIDER_ASSETS_URL . 'tipsy/jquery.tipsy.js', array('jquery'), METASLIDER_VERSION);
         wp_enqueue_script('metaslider-admin-script', METASLIDER_ASSETS_URL . 'metaslider/admin.js', array('jquery', 'metaslider-tipsy', 'media-upload'), METASLIDER_VERSION);
         wp_enqueue_script('metaslider-admin-addslide', METASLIDER_ASSETS_URL . 'metaslider/image/image.js', array('metaslider-admin-script'), METASLIDER_VERSION);
+
+        wp_dequeue_script('link'); // WP Posts Filter Fix (Advanced Settings not toggling)
 
         // localise the JS
         wp_localize_script( 'metaslider-admin-addslide', 'metaslider_image', array(
@@ -334,8 +333,10 @@ class MetaSliderPlugin {
         // we have an ID to work with
         $slider = get_post($atts['id']);
 
-        // check the slider is published
-        if ($slider->post_status != 'publish') return false;
+        // check the slider is published and the ID is correct
+        if (!$slider || $slider->post_status != 'publish' || $slider->post_type != 'ml-slider') {
+            return "<!-- meta slider {$atts['id']} not found -->";
+        }
 
         // lets go
         $this->set_slider($atts['id'], $atts);
@@ -350,10 +351,17 @@ class MetaSliderPlugin {
     public function set_slider($id, $shortcode_settings = array()) {
         $type = 'flex';
 
-        $settings = array_merge(get_post_meta($id, 'ml-slider_settings', true), $shortcode_settings);
+        if (isset($shortcode_settings['type'])) {
+            $type = $shortcode_settings['type'];
+        }
+        else if ($settings = get_post_meta($id, 'ml-slider_settings', true)) {
+            if (is_array($settings) && isset($settings['type'])) {
+                $type = $settings['type'];
+            }
+        }
 
-        if (isset($settings['type']) && in_array($settings['type'], array('flex', 'coin', 'nivo', 'responsive'))) {
-            $type = $settings['type'];
+        if (!in_array($type, array('flex', 'coin', 'nivo', 'responsive'))) {
+            $type = 'flex';
         }
 
         $this->slider = $this->create_slider($type, $id, $shortcode_settings);
@@ -394,11 +402,6 @@ class MetaSliderPlugin {
             $slider_id = $this->delete_slider(intval($_GET['delete']));
         }
 
-        // create a new slider
-        if (isset($_GET['add'])) {
-            $slider_id = $this->add_slider();
-        }
-
         // load a slider by ID
         if (isset($_REQUEST['id'])) {
         	$temp_id = intval($_REQUEST['id']);
@@ -407,6 +410,11 @@ class MetaSliderPlugin {
 	        if (get_post($temp_id)) {
 	        	$slider_id = $temp_id;
 	        }
+        }
+
+        // create a new slider
+        if (isset($_GET['add'])) {
+            $slider_id = $this->add_slider();
         }
 
         if ($slider_id > 0) {
@@ -428,18 +436,18 @@ class MetaSliderPlugin {
             $defaults = get_post_meta($last_modified, 'ml-slider_settings', true);
         }
 
-        // use the default settings if we can't find anything more suitable.
-        if (empty($defaults)) {
-            $slider = new MetaSlider($id, array());
-            $defaults = $slider->get_default_parameters();
-        }
-
         // insert the post
         $id = wp_insert_post(array(
             'post_title' => __("New Slider", "metaslider"),
             'post_status' => 'publish',
             'post_type' => 'ml-slider'
         ));
+
+        // use the default settings if we can't find anything more suitable.
+        if (empty($defaults)) {
+            $slider = new MetaSlider($id, array());
+            $defaults = $slider->get_default_parameters();
+        }
 
         // insert the post meta
         add_post_meta($id, 'ml-slider_settings', $defaults, true);
@@ -816,7 +824,7 @@ class MetaSliderPlugin {
 																'value' => $this->slider->get_setting('type'),
 																'options' => array(
 																	'flex'       => array('label' => __("Flex Slider", "metaslider")),
-																	'responsive' => array('label' => __("Responsive", "metaslider")),
+																	'responsive' => array('label' => __("R. Slides", "metaslider")),
 																	'nivo'       => array('label' => __("Nivo Slider", "metaslider")),
 																	'coin'       => array('label' => __("Coin Slider", "metaslider"))
 																)
@@ -976,10 +984,22 @@ class MetaSliderPlugin {
 																'priority' => 40,
 																'type' => 'checkbox',
 																'label' => __("Carousel mode", "metaslider"),
-																'class' => 'option flex',
+																'class' => 'option flex showNextWhenChecked',
 																'checked' => $this->slider->get_setting('carouselMode') == 'true' ? 'checked' : '',
 																'helptext' => __("Display multiple slides at once. Slideshow output will be 100% wide.", "metaslider")
 															),
+                                                            'carouselMargin' => array(
+                                                                'priority' => 45,
+                                                                'min' => 0,
+                                                                'max' => 9999,
+                                                                'step' => 1,
+                                                                'type' => 'number',
+                                                                'label' => __("Carousel margin", "metaslider"),
+                                                                'class' => 'option flex',
+                                                                'value' => $this->slider->get_setting('carouselMargin'),
+                                                                'helptext' => __("Pixel margin between slides in carousel.", "metaslider"),
+                                                                'after' => __("px", "metaslider")
+                                                            ),
 															'random' => array(
 																'priority' => 50,
 																'type' => 'checkbox',
@@ -1279,7 +1299,7 @@ class MetaSliderPlugin {
 				jQuery(document).ready(function() {
 				  jQuery('#insertMetaSlider').on('click', function() {
 				  	var id = jQuery('#metaslider-select option:selected').val();
-				  	window.send_to_editor('[metaslider id="' + id + '"]');
+				  	window.send_to_editor('[metaslider id=' + id + ']');
 					tb_remove();
 				  })
 				});
@@ -1308,6 +1328,6 @@ class MetaSliderPlugin {
 	}
 }
 
-$metaslider = new MetaSliderPlugin();
+add_action('plugins_loaded', array('MetaSliderPlugin', 'init'));
 
 ?>

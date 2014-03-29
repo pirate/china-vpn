@@ -7,7 +7,6 @@ class MetaFlexSlider extends MetaSlider {
     protected $js_function = 'flexslider';
     protected $js_path = 'sliders/flexslider/jquery.flexslider-min.js';
     protected $css_path = 'sliders/flexslider/flexslider.css';
-    protected $carousel_item_margin = 5;
 
     /**
      * Constructor
@@ -18,11 +17,9 @@ class MetaFlexSlider extends MetaSlider {
         parent::__construct($id, $shortcode_settings);
 
         add_filter('metaslider_flex_slider_parameters', array($this, 'enable_carousel_mode'), 10, 2);
-        add_filter('metaslider_flex_slider_parameters', array($this, 'enable_easing'), 10, 2);
+        add_filter('metaslider_flex_slider_parameters', array($this, 'manage_easing'), 10, 2);
         add_filter('metaslider_css', array($this, 'get_carousel_css'), 11, 3);
         add_filter('metaslider_css_classes', array($this, 'remove_bottom_margin'), 11, 3);
-
-        $this->carousel_item_margin = apply_filters('metaslider_carousel_margin', $this->carousel_item_margin, $id);
     }
 
     /**
@@ -39,7 +36,7 @@ class MetaFlexSlider extends MetaSlider {
                 $options["animation"] = "'slide'";
                 $options["direction"] = "'horizontal'";
                 $options["minItems"] = 1;
-                $options["itemMargin"] = $this->carousel_item_margin;
+                $options["itemMargin"] = apply_filters('metaslider_carousel_margin', $this->get_setting('carouselMargin'), $slider_id);
             }
 
             unset($options["carouselMode"]);
@@ -58,13 +55,17 @@ class MetaFlexSlider extends MetaSlider {
      * @param integer $slider_id
      * @return array $options
      */
-    public function enable_easing($options, $slider_id) {
+    public function manage_easing($options, $slider_id) {
         if (isset($options["easing"])) {
             $options['useCSS'] = 'false';
         }
 
+        if ($options["animation"] == '"fade"') {
+            unset($options['easing']);
+        }
+
         // we don't want this filter hanging around if there's more than one slideshow on the page
-        remove_filter('metaslider_flex_slider_parameters', array($this, 'enable_easing'), 10, 2);
+        remove_filter('metaslider_flex_slider_parameters', array($this, 'manage_easing'), 10, 2);
 
         return $options;
     }
@@ -98,7 +99,8 @@ class MetaFlexSlider extends MetaSlider {
      */
     public function get_carousel_css($css, $settings, $slider_id) {
         if (isset($settings["carouselMode"]) && $settings['carouselMode'] == 'true') {
-            $css .= "\n        #metaslider_{$slider_id}.flexslider li {margin-right: {$this->carousel_item_margin}px;}";
+            $margin = apply_filters('metaslider_carousel_margin', $this->get_setting('carouselMargin'), $slider_id);
+            $css .= "\n        #metaslider_{$slider_id}.flexslider li {margin-right: {$margin}px !important;}";
         }
 
         // we don't want this filter hanging around if there's more than one slideshow on the page
@@ -143,7 +145,7 @@ class MetaFlexSlider extends MetaSlider {
     public function enqueue_scripts() {
         parent::enqueue_scripts();
 
-        if ($this->get_setting('printJs') == 'true') {
+        if ($this->get_setting('printJs') == 'true' && $this->get_setting('effect') == 'slide') {
             wp_enqueue_script('metaslider-easing', METASLIDER_ASSETS_URL . 'easing/jQuery.easing.min.js', array('jquery'), METASLIDER_VERSION);
         }
     }
