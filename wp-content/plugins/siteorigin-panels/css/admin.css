@@ -960,6 +960,10 @@ html {
 	background: url(images/icons/gear.png);
 }
 
+.ui-dialog.panels-admin-dialog {
+	z-index: 80002 !important;
+}
+
 .ui-dialog.panels-admin-dialog .ui-dialog-content.ui-dialog-content-loading {
 	background: url('./images/ajax-loader-small.gif') center center no-repeat;
 }

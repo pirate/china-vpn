@@ -4,17 +4,17 @@ Tags: wordpress slideshow,seo,slideshow,slider,widget,wordpress slider,image sli
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CQ84KC4X8YKW8
 Requires at least: 3.5
 Tested up to: 3.8
-Stable tag: 2.7
+Stable tag: 2.8-beta
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Easy to use slideshow plugin. Create SEO optimised responsive slideshows with Nivo Slider, Flex Slider, Coin Slider and Responsive Slides.
+Easy to use WordPress slider plugin. Create SEO optimised responsive slideshows with Nivo Slider, Flex Slider, Coin Slider and Responsive Slides.
 
 == Description ==
 
 http://www.youtube.com/watch?v=I7IfkV6iLqo
 
-Meta Slider is the most popular slideshow plugin for WordPress. Creating slideshows with [Meta Slider](http://www.metaslider.com/) is fast and easy. Simply select images from your WordPress Media Library, drag and drop them into place, set slide captions, links and SEO fields all from one page. You can choose from 4 different slideshow types (Flex Slider, Nivo Slider, Responsive Slides & Coin Slider) and use the provided shortcode or template include to easily embed slideshows in your blog.
+The most popular WordPress slider plugin. Creating slideshows with [Meta Slider](http://www.metaslider.com/) is fast and easy. Simply select images from your WordPress Media Library, drag and drop them into place, set slide captions, links and SEO fields all from one page. You can choose from 4 different slideshow types (Flex Slider, Nivo Slider, Responsive Slides & Coin Slider) and use the provided shortcode or template include to easily embed slideshows in your blog.
 
 **Includes**
 
@@ -60,6 +60,7 @@ Upgrade to [Meta Slider Pro](http://www.metaslider.com/upgrade) to add support f
 * Chinese (thanks to 断青丝)
 * Taiwanese (thanks to 断青丝)
 * Norwegian (thanks to Dreamsoft)
+* Romanian (thanks to Octav Madalin Stanoaia)
 * Croatian
 
 Read more and thanks to:
@@ -104,13 +105,11 @@ You will need to paste the "Template Include" code into your theme (you can find
 * Find the correct place to add it (for example above or below the logo)
 * Paste in the code and save.
 
-If you want to include the slideshow on your homepage only, use this code:
+= I only want to show the slideshow on my homepage, how can I do that? =
 
-`<?php
-if (is_front_page() || is_home()) {
-    echo do_shortcode("[metaslider id=123]"); //replace 123 with slider ID
-}
-?>`
+Add the 'restrict_to' parameter to the shortcode, eg:
+
+`[metaslider id=XXX restrict_to=home]");`
 
 Theme specific instructions:
 
@@ -136,6 +135,35 @@ See www.metaslider.com/documentation/image-cropping/
 6. Administration panel - selecting slides
 
 == Changelog ==
+
+= 2.8 [28/04/14] =
+
+* New feature: Russian Language Pack added
+* Fix: Carousel image scaling in FireFox
+* Fix: wpautop issue with double ampersand
+* New feature: Shortcode parameter added to restrict slideshow to displaying on homepage only (see FAQ)
+* Improvement: Save slideshow after reordering slides
+* Fix: PHP Warning when no slideshows have been created
+
+= 2.8-beta [16/04/14] =
+
+* Improvement: Preview now uses admin-post action
+* Improvement: Classes are now auto loaded to reduce memory footprint
+(Thanks to Viktor Szépe for the above suggestions!)
+* Improvement: Slideshow initilisation time reduced
+* Improvement: HTML5 Compatibility: Alt tags always present on image tag - even if empty.
+* Improvement: Flex Slider slideshows should now 'reserve' a space for themselves while they fully load
+* Update: Flex Slider updated to v2.2.2
+* New feature: Romanian Language Pack added (Thanks to Octav Madalin Stanoaia)
+* New feature: Dutch Language Pack added
+* New feature: WP Super Cache compatibility - cache is cleared when saving slideshow
+* New feature: HTML5 Compatibility (Experimental). Set `define('METASLIDER_ENABLE_RESOURCE_MANAGER', true);` in wp-config.php to move Meta Slider link tags head of the page.
+
+= 2.7.2 [25/03/14] =
+
+* Fix: Only apply carousel margin to slides
+* Fix: Enqueue Easing library when carousel mode is enabled, regardless of effect selection
+* Fix: Thumbnail margin when theme has #content div
 
 = 2.7.1 [19/03/14] =
 

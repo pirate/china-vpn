@@ -36,7 +36,7 @@ class SiteOrigin_Panels_Widgets_Gallery extends WP_Widget {
 
 		$instance = wp_parse_args($instance, array(
 			'ids' => '',
-			'image_size' => apply_filters('siteorigin_panels_gallery_default_size', ''),
+			'size' => apply_filters('siteorigin_panels_gallery_default_size', ''),
 			'type' => apply_filters('siteorigin_panels_gallery_default_type', ''),
 			'columns' => 3,
 			'link' => '',
@@ -281,14 +281,17 @@ class SiteOrigin_Panels_Widgets_PostLoop extends WP_Widget{
 		global $siteorigin_panels_current_post;
 
 		if( !empty($siteorigin_panels_current_post) ){
-
 			if(!empty($query_args['post__not_in'])){
 				$query_args['post__not_in'][] = $siteorigin_panels_current_post;
 			}
 			else {
 				$query_args['post__not_in'] = array( $siteorigin_panels_current_post );
 			}
+		}
 
+		if( !empty($query_args['post__in']) && !is_array($query_args['post__in']) ) {
+			$query_args['post__in'] = explode(',', $query_args['post__in']);
+			$query_args['post__in'] = array_map('intval', $query_args['post__in']);
 		}
 
 		// Create the query
@@ -442,6 +445,7 @@ class SiteOrigin_Panels_Widgets_PostLoop extends WP_Widget{
 				<option value="comment_count" <?php selected($instance['orderby'], 'comment_count') ?>><?php esc_html_e('Comment Count', 'siteorigin-panels') ?></option>
 				<option value="menu_order" <?php selected($instance['orderby'], 'menu_order') ?>><?php esc_html_e('Menu Order', 'siteorigin-panels') ?></option>
 				<option value="menu_order" <?php selected($instance['orderby'], 'menu_order') ?>><?php esc_html_e('Menu Order', 'siteorigin-panels') ?></option>
+				<option value="post__in" <?php selected($instance['orderby'], 'post__in') ?>><?php esc_html_e('Post In Order', 'siteorigin-panels') ?></option>
 			</select>
 		</p>
 

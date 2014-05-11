@@ -7,7 +7,7 @@ table.tablesorter thead tr .header:after, table.tablesorter thead tr .headerSort
 	width: 7px;
 	position: absolute;
 	left: 7px;
-	background: transparent url('jquery.tablesorter.png') scroll 0 0 no-repeat;
+	background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAJCAMAAADJhsaRAAAACVBMVEUAAAC3t7f///+mUE44AAAAAXRSTlMAQObYZgAAAB9JREFUeAFjAAJGIAZRjIxgCgQgFEQEJossAVcP0w8ABMgAISkLXMUAAAAASUVORK5CYII=') scroll 0 0 no-repeat;
 }
 table.tablesorter thead tr .header:after {
 	height: 9px;

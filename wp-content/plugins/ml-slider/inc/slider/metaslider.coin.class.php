@@ -11,10 +11,10 @@ class MetaCoinSlider extends MetaSlider {
 
     /**
      * Enable the parameters that are accepted by the slider
-     * 
+     *
      * @return array enabled parameters
      */
-    protected function get_param($param) {
+    protected function get_param( $param ) {
         $params = array(
             'effect' => 'animation',
             'width' => 'width',
@@ -32,7 +32,7 @@ class MetaCoinSlider extends MetaSlider {
             'nextText' => 'nextText'
         );
 
-        if (isset($params[$param])) {
+        if ( isset( $params[$param] ) ) {
             return $params[$param];
         }
 
@@ -46,14 +46,14 @@ class MetaCoinSlider extends MetaSlider {
      */
     protected function get_html() {
         $return_value = "<div id='" . $this->get_identifier() . "' class='coin-slider'>";
-        
-        foreach ($this->slides as $slide) {
+
+        foreach ( $this->slides as $slide ) {
             $return_value .= "\n" . $slide;
         }
-        
+
         $return_value .= "\n        </div>";
-        
-        return apply_filters('metaslider_coin_slider_get_html', $return_value, $this->id, $this->settings); $retVal;
+
+        return apply_filters( 'metaslider_coin_slider_get_html', $return_value, $this->id, $this->settings ); $retVal;
     }
 }
 ?>

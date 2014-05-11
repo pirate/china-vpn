@@ -11,10 +11,10 @@ class MetaResponsiveSlider extends MetaSlider {
     /**
      * Detect whether thie slide supports the requested setting,
      * and if so, the name to use for the setting in the Javascript parameters
-     * 
+     *
      * @return false (parameter not supported) or parameter name (parameter supported)
      */
-    protected function get_param($param) {
+    protected function get_param( $param ) {
         $params = array(
             'prevText' => 'prevText',
             'nextText' => 'nextText',
@@ -26,7 +26,7 @@ class MetaResponsiveSlider extends MetaSlider {
             'autoPlay' => 'auto'
         );
 
-        if (isset($params[$param])) {
+        if ( isset( $params[$param] ) ) {
             return $params[$param];
         }
 
@@ -40,21 +40,21 @@ class MetaResponsiveSlider extends MetaSlider {
      */
     protected function get_html() {
         $return_value = "<ul id='" . $this->get_identifier() . "' class='rslides'>";
-        
+
         $first = true;
-        foreach ($this->slides as $slide) {
+        foreach ( $this->slides as $slide ) {
             $style = "";
-            
-            if (!$first) {
+
+            if ( !$first ) {
                 $style = " style='display: none;'";
             }
             $return_value .= "\n            <li{$style}>" . $slide . "</li>";
             $first = false;
         }
-        
+
         $return_value .= "\n        </ul>";
-        
-        return apply_filters('metaslider_responsive_slider_get_html', $return_value, $this->id, $this->settings);;
+
+        return apply_filters( 'metaslider_responsive_slider_get_html', $return_value, $this->id, $this->settings );;
     }
 }
 ?>

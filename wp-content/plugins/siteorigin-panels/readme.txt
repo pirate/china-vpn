@@ -1,8 +1,8 @@
 === Page Builder by SiteOrigin ===
 Contributors: gpriday
 Tags: page builder, responsive, widget, widgets, builder, page, admin, gallery, content, cms, pages, post, css, layout, grid
-Requires at least: 3.6
-Tested up to: 3.8.1
+Requires at least: 3.7
+Tested up to: 3.9
 Stable tag: trunk
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -88,10 +88,21 @@ I've tried to ensure that Page Builder is compatible with most plugin widgets. I
 
 == Changelog ==
 
+= 1.4.10 =
+* Fixed: Fixed z-indexes so that TinyMCE dropdowns (like formatting) aren't hidden.
+
+= 1.4.9 =
+* Fixed: jQuery UI dialog wasn't being enqueued properly in WordPress 3.9.
+
+= 1.4.8 =
+* Updated Post Loop widget so it now accepts post__in in additional args field.
+* Added update notification.
+* Added filters for before and after the row content.
+* Removed references to legacy widgets.
+
 = 1.4.7 =
 * Fixed size problem in gallery widget.
 * Compatibility fixes with WordPress 3.9.
-* Added checks to prevent total content loss in some situations.
 
 = 1.4.6 =
 * Widgets are now only run through their update function when modified.

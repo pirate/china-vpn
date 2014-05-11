@@ -70,6 +70,9 @@ if(getenv("REQUEST_METHOD") === 'POST')
 
 	$meowdata['meow_disable_editor'] = intval($_POST['meow_disable_editor']) === 1;
 
+	//default to REMOTE_ADDR
+	$meowdata['meow_ip_key'] = array_key_exists($_POST["meow_ip_key"], $_SERVER) && filter_var($_SERVER[$_POST['meow_ip_key']], FILTER_VALIDATE_IP) ? $_POST['meow_ip_key'] : 'REMOTE_ADDR';
+
 	//bad nonce, don't save
 	if(!wp_verify_nonce($_POST['_wpnonce'],'meow-settings'))
 		echo '<div class="error fade"><p>Sorry the form had expired.  Please try again.</p></div>';
@@ -129,7 +132,7 @@ if(getenv("REQUEST_METHOD") === 'POST')
 //Grab saved or default settings
 else
 {
-	$options = array('meow_protect_login','meow_fail_limit','meow_fail_window','meow_fail_reset_on_success','meow_ip_exempt','meow_apocalypse_content','meow_apocalypse_title','meow_store_ua','meow_clean_database','meow_data_expiration','meow_password_alpha','meow_password_numeric','meow_password_symbol','meow_password_length','meow_remove_generator_tag','meow_disable_editor');
+	$options = array('meow_protect_login','meow_fail_limit','meow_fail_window','meow_fail_reset_on_success','meow_ip_exempt','meow_apocalypse_content','meow_apocalypse_title','meow_store_ua','meow_clean_database','meow_data_expiration','meow_password_alpha','meow_password_numeric','meow_password_symbol','meow_password_length','meow_remove_generator_tag','meow_disable_editor','meow_ip_key');
 	foreach($options AS $option)
 		$meowdata[$option] = meow_get_option($option);
 }
@@ -265,7 +268,7 @@ else
 						if(false === meow_get_IP())
 						{
 						?>
-							<div class="error fade"><p>Warning: your server or WordPress configuration seems to be masking your IP address (<code><?php echo $_SERVER['REMOTE_ADDR']; ?></code>).  The log-in protection functions require access to the public IP address of each visitor.  If the IP exposed to PHP falls within private or reserved ranges, or if it matches the server's IP, no action can be taken.</p></div>
+							<div class="error fade"><p>Warning: your server or WordPress configuration seems to be masking your IP address (<code><?php echo esc_html($_SERVER[$meowdata['meow_ip_key']]); ?></code>).  The log-in protection functions require access to the public IP address of each visitor.  If the IP exposed to PHP falls within private or reserved ranges, or if it matches the server's IP, no action can be taken. Please take a look at the proxy configuration below to possibly correct this.</p></div>
 						<?php
 						}//end IP error
 						?>
@@ -298,9 +301,46 @@ else
 									<th scope="row">Exempt IP(s), one per line</th>
 									<td>
 										<textarea name="meow_ip_exempt" rows="5" cols="50"><?php echo esc_textarea(trim(implode("\n", $meowdata['meow_ip_exempt']))); ?></textarea>
-										<p class="description">To avoid accidentally banning yourself, you might consider adding your IP address (<code><?php echo $_SERVER['REMOTE_ADDR']; ?></code>) to the above list.</p>
+										<p class="description">To avoid accidentally banning yourself, you might consider adding your IP address (<code><?php echo $_SERVER[$meowdata['meow_ip_key']]; ?></code>) to the above list.</p>
 									</td>
 								</tr>
+								<?php
+								//proxy set up! let's run through $_SERVER and see what IP-related variables are to be found!
+								$ip_variables = array();
+								ksort($_SERVER);
+								foreach($_SERVER AS $k=>$v)
+								{
+									//skip if not an IP, or if it is the server's address
+									if(!filter_var($v, FILTER_VALIDATE_IP) || $k === 'SERVER_ADDR')
+										continue;
+
+									//and save it
+									$ip_variables[] = $k;
+								}
+
+								//okay, so if there is only one variable, let's not confuse people with proxy configurations...
+								if(count($ip_variables) === 1)
+									echo '<input type="hidden" name="meow_ip_key" value="' . esc_attr(implode('', $ip_variables)) . '" />';
+								//otherwise, let's present the list!
+								else
+								{
+								?>
+								<tr valign="top" class="meow-protect-login-only">
+									<th scope="row">Proxy Configuration</th>
+									<td>
+										<p class="description">If your server is behind a proxy, you might need to choose a different environmental variable to ensure visitor IP addresses are correctly attributed.  Take a look at the list below, and select the variable that shows <u>your</u> person, public IP address.  The default is <code>REMOTE_ADDR</code>.</p>
+										<ul>
+											<?php
+											//run back through each of our IP variables to show what we know about them
+											foreach($ip_variables AS $ip_variable)
+												echo '<li><label><input type="radio" name="meow_ip_key" value="' . esc_attr($ip_variable) . '"' . ($meowdata['meow_ip_key'] === $ip_variable ? ' checked ' : '') . ' /> <code>' . esc_html($ip_variable) . "</code> <em>{$_SERVER[$ip_variable]}</em></label></li>";
+											?>
+										</ul>
+									</td>
+								</tr>
+								<?php
+								}//end proxy configuration
+								?>
 								<tr valign="top" class="meow-protect-login-only">
 									<th scope="row">Apocalypse Meow</th>
 									<td>
@@ -338,7 +378,7 @@ else
 					<h3 class="hndle">Password Requirements</h3>
 					<div class="inside">
 						<p>Most people use horribly insecure passwords.  Tweak the following settings to enforce halfway decent choices from your users.<br />
-						<span class="description">Note: These requirments are only applied to new (or updated) passwords; they have no effect on current passwords.</span></p>
+						<span class="description">Note: These requirments are only applied to new (or updated) passwords; they have no effect on current passwords. You can always reset all user passwords <a href="<?php echo esc_url(admin_url('tools.php?page=meow-password')); ?>" title="Reset Passwords">here</a> if needed.</span></p>
 
 						<table class="form-table">
 							<tbody>
@@ -375,8 +415,6 @@ else
 					</div>
 				</div>
 				<!--end password requirements-->
-
-
 
 			</div><!-- /has-sidebar-content -->
 		</div><!-- /has-sidebar -->

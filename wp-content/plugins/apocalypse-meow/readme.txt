@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: blobfolio
+Contributors: blobfolio, jjfalling
 Donate link: http://www.blobfolio.com/donate.html
 Tags: security, login, password, cats, generator, wp-content, PHP, malware, exploit
 Requires at least: 3.4
@@ -21,6 +21,7 @@ Apocalypse Meow provides several tools to help you lock down the wp-admin area:
   * Prevent the direct execution of PHP scripts in `wp-content/`.
   * Rename the default "admin" user.
   * Disable the theme/plugin editor.
+  * Reset all user passwords.
 
 == Installation ==
 
@@ -71,10 +72,6 @@ Of course not!  Haha.  Apocalypse Meow only records the following information wi
 3. Browser (this is self-reported, so take it with a grain of salt)
 4. Status (e.g. success or failure)
 
-= The kitten graphic is stupid and unprofessional.  Can I change the Apocalypse page? =
-
-Yes, you can change both the page title and content via the Settings > Apocalypse Meow page.
-
 = What do the different log-in statuses mean on the Log-in History page? =
 
 * Success: the log-in was successful;
@@ -84,6 +81,10 @@ Yes, you can change both the page title and content via the Settings > Apocalyps
 = Wait... how do plugins and themes work if direct PHP execution is disabled?! =
 
 WordPress themes and plugins are made up of PHP scripts that *should* only be executed indirectly through the WordPress engine. Of course, some plugins and themes are poorly coded and do not fully exist within the WP framework and so might break if direct PHP execution is disabled. But hey, if things break, simply disable this option. ;)
+
+= Will the brute-force log-in prevention work if my server is behind a proxy? =
+
+As of version 1.5.0, it is now possible to specify an alternative $_SERVER variable Apocalypse Meow should use to determine the visitor's "true" IP.  It is important to note, however, that depending on how that environmental variable is populated, the value might be forgeable.  Nonetheless, this should be better than nothing!
 
 == Fail2ban setup ==
 
@@ -97,6 +98,13 @@ Some robots are so dumb they'll continue trying to submit credentials even after
 3. Pretty log-in statistics!
 
 == Changelog ==
+
+= 1.6.0 =
+* In honor of Heartbleed, there is now a tool for resetting all user passwords en masse;
+
+= 1.5.0 =
+* Allow alternate $_SERVER variables for proxy installations (thanks `jjfalling`);
+* Minor code clean up;
 
 = 1.4.5 =
 * Warn administrators on settings page of potential proxy/intranet-type issues;
@@ -171,6 +179,12 @@ Some robots are so dumb they'll continue trying to submit credentials even after
 * Apocalypse Meow is born!
 
 == Upgrade Notice ==
+
+= 1.6.0 =
+Includes a tool for resetting all user passwords. Sites which were vulnerable to Heartbleed are encouraged to take advantage of this.
+
+= 1.5.0 =
+Improvements for proxy installations.
 
 = 1.4.5 =
 Various UX improvements, mostly in the form of clearer warnings and explanations.

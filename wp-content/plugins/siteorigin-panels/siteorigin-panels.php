@@ -3,7 +3,7 @@
 Plugin Name: Page Builder by SiteOrigin
 Plugin URI: http://siteorigin.com/page-builder/
 Description: A drag and drop, responsive page builder that simplifies building your website.
-Version: 1.4.7
+Version: 1.4.10
 Author: Greg Priday
 Author URI: http://siteorigin.com
 License: GPL3
@@ -11,18 +11,28 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: http://siteorigin.com/page-builder/donate/
 */
 
-define('SITEORIGIN_PANELS_VERSION', '1.4.7');
+define('SITEORIGIN_PANELS_VERSION', '1.4.10');
 define('SITEORIGIN_PANELS_BASE_FILE', __FILE__);
 
-include plugin_dir_path(__FILE__).'widgets/basic.php';
+include plugin_dir_path(__FILE__) . 'widgets/basic.php';
 
-include plugin_dir_path(__FILE__).'inc/options.php';
-include plugin_dir_path(__FILE__).'inc/aff.php';
-include plugin_dir_path(__FILE__).'inc/revisions.php';
-include plugin_dir_path(__FILE__).'inc/copy.php';
-include plugin_dir_path(__FILE__).'inc/styles.php';
-include plugin_dir_path(__FILE__).'inc/legacy.php';
+include plugin_dir_path(__FILE__) . 'inc/options.php';
+include plugin_dir_path(__FILE__) . 'inc/aff.php';
+include plugin_dir_path(__FILE__) . 'inc/revisions.php';
+include plugin_dir_path(__FILE__) . 'inc/copy.php';
+include plugin_dir_path(__FILE__) . 'inc/styles.php';
+include plugin_dir_path(__FILE__) . 'inc/legacy.php';
+include plugin_dir_path(__FILE__) . 'inc/update.php';
+
 if( defined('SITEORIGIN_PANELS_DEV') && SITEORIGIN_PANELS_DEV ) include plugin_dir_path(__FILE__).'inc/debug.php';
+
+/**
+ * Hook for activation of Page Builder.
+ */
+function siteorigin_panels_activate(){
+	add_option('siteorigin_panels_initial_version', SITEORIGIN_PANELS_VERSION, '', 'no');
+}
+register_activation_hook(__FILE__, 'siteorigin_panels_activate');
 
 /**
  * Initialize the Page Builder.
@@ -294,14 +304,18 @@ add_action( 'admin_print_scripts-appearance_page_so_panels_home_page', 'siteorig
 function siteorigin_panels_admin_enqueue_styles() {
 	$screen = get_current_screen();
 	if ( in_array( $screen->id, siteorigin_panels_setting('post-types') ) || $screen->base == 'appearance_page_so_panels_home_page') {
-		wp_enqueue_style( 'so-panels-admin', plugin_dir_url(__FILE__) . 'css/admin.css' );
+		wp_enqueue_style( 'so-panels-admin', plugin_dir_url(__FILE__) . 'css/admin.css', array( ), SITEORIGIN_PANELS_VERSION );
 
 		global $wp_version;
 		if( version_compare( $wp_version, '3.9.beta.1', '<' ) ) {
-			wp_enqueue_style( 'so-panels-admin-jquery-ui', plugin_dir_url(__FILE__) . 'css/jquery-ui.css' );
+			// Versions before 3.9 need some custom jQuery UI styling
+			wp_enqueue_style( 'so-panels-admin-jquery-ui', plugin_dir_url(__FILE__) . 'css/jquery-ui.css', array(), SITEORIGIN_PANELS_VERSION );
+		}
+		else {
+			wp_enqueue_style( 'wp-jquery-ui-dialog' );
 		}
 
-		wp_enqueue_style( 'so-panels-chosen', plugin_dir_url(__FILE__) . 'js/chosen/chosen.css' );
+		wp_enqueue_style( 'so-panels-chosen', plugin_dir_url(__FILE__) . 'js/chosen/chosen.css', array(), SITEORIGIN_PANELS_VERSION );
 		do_action( 'siteorigin_panel_enqueue_admin_styles' );
 	}
 }
@@ -670,6 +684,9 @@ function siteorigin_panels_render( $post_id = false, $enqueue_css = true, $panel
 
 	foreach ( $grids as $gi => $cells ) {
 
+		// This allows other themes and plugins to add html before the row
+		echo apply_filters( 'siteorigin_panels_before_row', '', $panels_data['grids'][$gi] );
+
 		$grid_classes = apply_filters( 'siteorigin_panels_row_classes', array('panel-grid'), $panels_data['grids'][$gi] );
 		$grid_attributes = apply_filters( 'siteorigin_panels_row_attributes', array(
 			'class' => implode( ' ', $grid_classes ),
@@ -686,8 +703,6 @@ function siteorigin_panels_render( $post_id = false, $enqueue_css = true, $panel
 		if( !empty( $panels_data['grids'][$gi]['style']['class'] ) ) {
 			$style_attributes['class'] = array('panel-row-style-'.$panels_data['grids'][$gi]['style']['class']);
 		}
-
-
 
 		// Themes can add their own attributes to the style wrapper
 		$style_attributes = apply_filters('siteorigin_panels_row_style_attributes', $style_attributes, !empty($panels_data['grids'][$gi]['style']) ? $panels_data['grids'][$gi]['style'] : array());
@@ -736,6 +751,9 @@ function siteorigin_panels_render( $post_id = false, $enqueue_css = true, $panel
 		if( !empty($style_attributes) ) {
 			echo '</div>';
 		}
+
+		// This allows other themes and plugins to add html after the row
+		echo apply_filters( 'siteorigin_panels_after_row', '', $panels_data['grids'][$gi] );
 	}
 
 	$html = ob_get_clean();
@@ -771,6 +789,7 @@ add_action('wp_footer', 'siteorigin_panels_print_inline_css');
  * @param int $panel the panel number.
  * @param bool $is_first Is this the first widget in the cell.
  * @param bool $is_last Is this the last widget in the cell.
+ * @param bool $post_id
  */
 function siteorigin_panels_the_widget( $widget, $instance, $grid, $cell, $panel, $is_first, $is_last, $post_id = false ) {
 	if ( !class_exists( $widget ) ) return;
@@ -1062,8 +1081,15 @@ function siteorigin_panels_render_form($widget, $instance = array(), $raw = fals
 	return $form;
 }
 
+/**
+ * Add some action links.
+ *
+ * @param $links
+ * @return array
+ */
 function siteorigin_panels_plugin_action_links($links) {
 	$links[] = '<a href="http://siteorigin.com/threads/plugin-page-builder/">'.__('Support Forum', 'siteorigin-panels').'</a>';
+	$links[] = '<a href="http://siteorigin.com/page-builder/#newsletter">'.__('Newsletter', 'siteorigin-panels').'</a>';
 	return $links;
 }
 add_action('plugin_action_links_' . plugin_basename(__FILE__), 'siteorigin_panels_plugin_action_links');

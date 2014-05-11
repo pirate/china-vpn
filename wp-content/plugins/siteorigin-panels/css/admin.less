@@ -859,16 +859,20 @@ html {
 	.ui-icon.ui-icon-gear{ background: url(images/icons/gear.png); }
 }
 
-.ui-dialog.panels-admin-dialog .ui-dialog-content{
-	&.ui-dialog-content-loading {
-		background: url('./images/ajax-loader-small.gif') center center no-repeat;
-	}
+.ui-dialog.panels-admin-dialog{
+	z-index: 80002 !important;
 
-	*:first-child{
-		margin-top: 0;
-	}
+	.ui-dialog-content{
+		&.ui-dialog-content-loading {
+			background: url('./images/ajax-loader-small.gif') center center no-repeat;
+		}
 
-	*:last-child{
-		margin-bottom: 0;
+		*:first-child{
+			margin-top: 0;
+		}
+
+		*:last-child{
+			margin-bottom: 0;
+		}
 	}
 }

@@ -160,8 +160,16 @@
     display: none
 }
 
-.metaslider .probutton,
-.metaslider .probutton:hover {
+.metaslider_pro {
+    margin-top: 50px;
+}
+.metaslider_pro p {
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.metaslider_pro .probutton,
+.metaslider_pro .probutton:hover {
     width: 36%;
     margin: 20px 32% 10px 32%;
     float: left;
@@ -190,21 +198,21 @@
     line-height: 2em;
 }
 
-.metaslider .super {
+.metaslider_pro .super {
     text-transform: uppercase;
     font-size: 0.7em;
     vertical-align: top;
     line-height: 2em;
 }
 
-.metaslider .subtext {
+.metaslider_pro .subtext {
     float: left;
     width: 100%;
     text-align: center;
     font-style: italic;
 }
 
-.metaslider .logo {
+.metaslider_pro .logo {
     text-transform: uppercase
 }
 
@@ -618,7 +626,16 @@ input[type=radio]:checked + label {
 }
 
 .metaslider .right .postbox table {
-    border: 0
+    border: 0;
+    width: 100%;
+}
+
+.metaslider .right .postbox table textarea {
+    width: 100%;
+    height: 100px;
+    font-family: monospace;
+    background: #272822;
+    color: #a6e22e;
 }
 
 .metaslider .right .postbox h3 {
@@ -735,13 +752,7 @@ textarea:-ms-input-placeholder {
     font-size: 11px
 }
 
-.metaslider .slide.image .tabs-content {
-    overflow: hidden
-}
-
 .metaslider .left .tabs-content {
-    height: 118px;
-    overflow-x: scroll;
     clear: both;
 }
 
@@ -750,7 +761,11 @@ textarea:-ms-input-placeholder {
     clear: both;
     width: 100%;
     vertical-align: middle;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
+}
+
+.metaslider .tabs-content .row.last {
+    margin-bottom: 0;
 }
 
 .metaslider .tabs-content .row label {

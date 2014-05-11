@@ -3,13 +3,13 @@
 Plugin Name: Apocalypse Meow
 Plugin URI: http://wordpress.org/extend/plugins/apocalypse-meow/
 Description: A simple, light-weight collection of tools to help protect wp-admin, including password strength requirements and brute-force log-in prevention.
-Version: 1.4.5
+Version: 1.6.0
 Author: Blobfolio, LLC
 Author URI: http://www.blobfolio.com/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-	Copyright © 2013  Blobfolio, LLC  (email: hello@blobfolio.com)
+	Copyright © 2014  Blobfolio, LLC  (email: hello@blobfolio.com)
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -49,7 +49,7 @@ function meow_init_variables() {
 	define('MEOW_DB', '1.3.5');
 
 	//the program version
-	define('MEOW_VERSION', '1.4.4');
+	define('MEOW_VERSION', '1.6.0');
 
 	//the kitten image
 	define('MEOW_IMAGE', plugins_url('kitten.gif', __FILE__));
@@ -124,6 +124,14 @@ function meow_get_option($option){
 		//whether or not to remove old log-in entries from the database
 		case 'meow_clean_database':
 			return (bool) get_option('meow_clean_database', true);
+		//weather to use a custom client ip header
+		case 'meow_ip_key':
+			$tmp = get_option('meow_ip_key', 'REMOTE_ADDR');
+			//make sure this is a valid index before returning it
+			if(array_key_exists($tmp, $_SERVER) && filter_var($_SERVER[$tmp], FILTER_VALIDATE_IP))
+				return $tmp;
+			else
+				return 'REMOTE_ADDR';
 		//how long to keep old log-in entries in the database
 		case 'meow_data_expiration':
 			$tmp = (int) get_option('meow_data_expiration', 90);
@@ -315,6 +323,33 @@ add_action('admin_menu', 'meow_jail_menu');
 // @return true
 function meow_jail(){
 	require_once(dirname(__FILE__) . '/jail.php');
+	return true;
+}
+
+//--------------------------------------------------
+//Create a Users->Reset Passwords menu item
+//
+// @since 1.6.0
+//
+// @param n/a
+// @return true
+function meow_password_menu(){
+	$page = add_submenu_page('tools.php', 'Reset User Passwords', 'Reset User Passwords', 'manage_options', 'meow-password', 'meow_password');
+	return true;
+}
+add_action('admin_menu', 'meow_password_menu');
+
+//--------------------------------------------------
+//The Users->Reset Passwords page
+//
+// this is an external file (password.php)
+//
+// @since 1.6.0
+//
+// @param n/a
+// @return true
+function meow_password(){
+	require_once(dirname(__FILE__) . '/password.php');
 	return true;
 }
 
@@ -535,7 +570,7 @@ function meow_enqueue_js_flot(){
 // @param n/a
 // @return html
 function meow_get_header(){
-	$pages = array('Settings'=>'options-general.php?page=meow-settings', 'Log-in History'=>'users.php?page=meow-history', 'Log-in Jail'=>'users.php?page=meow-jail', 'Statistics'=>'users.php?page=meow-statistics');
+	$pages = array('Settings'=>'options-general.php?page=meow-settings', 'Reset Passwords'=>'tools.php?page=meow-password', 'Log-in History'=>'users.php?page=meow-history', 'Log-in Jail'=>'users.php?page=meow-jail', 'Statistics'=>'users.php?page=meow-statistics');
 
 	$xout = '<img src="' . esc_url(MEOW_IMAGE) . '" alt="kitten" style="width: 42px; float:left; margin-right: 10px; height: 42px; border: 0;" />
 	<h2>Apocalypse Meow</h2>
@@ -573,6 +608,89 @@ function meow_purge_data(){
 	die();
 }
 add_action('wp_ajax_meow_purge_data', 'meow_purge_data');
+
+//--------------------------------------------------
+//Reset user passwords en masse
+//
+// @since 1.6.0
+//
+// @param n/a
+// @return n/a
+function meow_reset_passwords(){
+
+	//send the status back to the server
+	$xout = array('success'=>0, 'page'=>0, 'completed'=>0, 'total'=>0);
+
+	//how many are we resetting per batch?
+	$limit = 20;
+
+	//the current page
+	$page = (int) $_POST['page'];
+	if($page < 0)
+		$page = 0;
+
+	//the maximum user id at the time this began
+	$max = (int) $_POST['max'];
+
+	$message = esc_html(trim($_POST['message']));
+
+	//message subject (not user specific)
+	$msubject = '[' . get_bloginfo('name') . '] Password Reset';
+
+	//verify ajax nonce
+	if(check_ajax_referer( 'm30wp@$$w0rd', 'nonce', false) && current_user_can('manage_options'))
+	{
+		global $wpdb;
+		global $current_user;
+
+		//just in case $current_user isn't set for some reason
+		get_currentuserinfo();
+
+		//pull user info in a batch, save current user for last
+		$dbResult = $wpdb->get_results("SELECT `ID`, `user_login`, `user_email` FROM `{$wpdb->prefix}users`  WHERE `ID` <= $max ORDER BY (`ID`={$current_user->ID}) ASC, `ID` ASC LIMIT " . ($page * $limit) . ", $limit", ARRAY_A);
+		if(is_array($dbResult) && count($dbResult))
+		{
+			//cycle through each user
+			$updates = array();
+			foreach($dbResult AS $Row)
+			{
+				//make a nice password!
+				$password = wp_generate_password(35, true, false);
+
+				//message body
+				$mbody = (strlen($message) ? "$message\n\n" : '') . "Username: {$Row['user_login']}\nPassword: $password\n" . site_url('wp-login.php');
+
+				//e-mail user
+				wp_mail($Row['user_email'], $msubject, $mbody);
+
+				//we'll update the database in one swoop later, so store the hash for now
+				$updates[intval($Row['ID'])] = wp_hash_password($password);
+			}
+
+			//as promised, we need to update the database. it is a lot faster to do one bulk query than lots of separate ones.
+			$query = "UPDATE `{$wpdb->prefix}users` SET `user_pass` = CASE `ID`";
+			foreach($updates AS $k=>$v)
+				$query .= "\nWHEN $k THEN '" . esc_sql($v) . "'";
+			$query .= "\nEND WHERE `ID` IN (" . implode(',', array_keys($updates)) . ")";
+
+			$wpdb->query($query);
+		}
+
+		//update status
+		$xout['success'] = 1;
+		$xout['page'] = ($page + 1);
+		$xout['completed'] = $xout['page'] * $limit;
+		$xout['total'] = (int) $wpdb->get_var("SELECT COUNT(*) FROM `{$wpdb->prefix}users` WHERE `ID` <= $max");
+
+		//don't report > 100% just because we took a shortcut
+		if($xout['total'] < $xout['completed'])
+			$xout['completed'] = $xout['total'];
+	}
+
+	echo json_encode($xout);
+	die();
+}
+add_action('wp_ajax_meow_reset_passwords', 'meow_reset_passwords');
 
 //--------------------------------------------------
 //Pardon a banned IP
@@ -741,17 +859,19 @@ function meow_migrate_banned(){
 //--------------------------------------------------
 //Get and/or validate an IP address
 //
-// if no IP is passed, REMOTE_ADDR is used.  IP is returned so long as
+// if no IP is passed, the client ip header is used.  IP is returned so long as
 // it is a valid address (and not private/reserved), otherwise false
 //
 // @since 1.0.0
 //
-// @param $ip (optional) an IP address to validate; otherwise REMOTE_ADDR
+// @param $ip (optional) an IP address to validate; otherwise the client ip header
 // @return string IP or false
+
 function meow_get_IP($ip=null){
-	//if not supplied, let's use REMOTE_ADDR
+
+	//if not supplied, let's use the client ip header
 	if(is_null($ip))
-		$ip = $_SERVER['REMOTE_ADDR'];
+		$ip = $_SERVER[meow_get_option('meow_ip_key')];
 
 	//return the ip, unless it is invalid
 	return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) ? $ip : false;
